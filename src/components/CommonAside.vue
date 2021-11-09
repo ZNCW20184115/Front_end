@@ -23,7 +23,7 @@
       :key="item.path" 
     >
       <template slot="title">
-        <i class="'el-icon-' + item.icon"></i>
+        <i :class="'el-icon-' + item.icon"></i>
         <span slot="title">{{ item.label }}</span>
       </template>
       <el-menu-item-group>
@@ -80,7 +80,7 @@
           },
           {
             label: "其他",
-            icon: "location",
+            icon: "collection-tag",
             children: [
               {
                 path: "/page1",
