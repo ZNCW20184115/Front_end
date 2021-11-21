@@ -31,7 +31,7 @@
     <el-tab-pane label="转出审批" name="second">
         <el-table :data="tableData" style="width: 100%">
             <el-table-column label="申请日期" width="180">
-                <template slot-scope="scope">
+                <template  slot-scope="scope">
                     <span style="margin-left: 10px">{{ scope.row.date }}</span>
                 </template>
             </el-table-column>

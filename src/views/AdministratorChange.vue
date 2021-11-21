@@ -40,7 +40,6 @@
           @click="handleEdit(scope.$index, scope.row)">使管理</el-button>
         <el-button
           size="mini"
-          
           @click="handleDelete(scope.$index, scope.row)">使查看</el-button>
        </template>
       </el-table-column>

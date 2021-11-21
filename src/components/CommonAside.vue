@@ -88,7 +88,7 @@
             path: "/AdministratorChange",
             name: "AdministratorChange",
             label: "管理员变更",
-            icon: "setting",
+            icon: "setting" ,
           },
           {
             label: "其他",
