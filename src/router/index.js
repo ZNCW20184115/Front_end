@@ -5,14 +5,14 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import RelationTransform from '../views/RelationTransform.vue'
 import AdministratorChange from '../views/AdministratorChange.vue'
-
+import operation from '../views/operation.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path:  '/',
       name: 'Login',
       component: Login
     },
@@ -28,7 +28,7 @@ export default new Router({
       children:[
         {
           path:'/home',
-          name:'home',
+          name:'home' ,
           component:()=>import('@/views/Home.vue')
         },
         {
@@ -42,15 +42,22 @@ export default new Router({
           component:()=>import('@/views/User.vue')
         },
         {
-          path:'/RelationTransform',
-          name:'RelationTransform',
-          component:()=>import('@/views/RelationTransform.vue')
+          path:'/operation',
+          name:'operation',
+          component:operation,
+          children:[
+            {
+              path:'/RelationTransform',
+              name:'RelationTransform',
+              component:()=>import('@/views/RelationTransform.vue')
+            },
+            {
+              path:'/AdministratorChange',
+              name:'AdministratorChange',
+              component:()=>import('@/views/AdministratorChange.vue')
+            }
+          ]
         },
-        {
-          path:'/AdministratorChange',
-          name:'AdministratorChange',
-          component:()=>import('@/views/AdministratorChange.vue')
-        }
       ]
     }
   ]
