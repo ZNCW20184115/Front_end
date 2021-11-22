@@ -29,6 +29,11 @@ export default new Router({
           component:()=>import('@/views/Home.vue')
         },
         {
+          path:'/lookuser',
+          name:'lookuser',
+          component:()=>import('@/views/Lookuser.vue')
+        },
+        {
           path: '/emo',
           name: 'emo',
           component: () => import('@/views/Emo.vue')

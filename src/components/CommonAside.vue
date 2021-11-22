@@ -1,44 +1,52 @@
 <template>
-  <el-menu default-active="1-4-1" 
-    class="el-menu-vertical-demo" 
-    :collapse="isCollapse"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
-  >
+  <el-menu default-active="1-4-1" class="el-menu-vertical-demo" :collapse="isCollapse" background-color="#545c64"
+    text-color="#fff" active-text-color="#ffd04b" >
+    
     <h3 v-show="!isCollapse">员工管理系统</h3>
     <h3 v-show="isCollapse"></h3>
+
     <el-menu-item 
       :index="item.path" 
       v-for="item in noChildren" 
       :key="item.path"
-      @click="clickMenu(item)"
-    >
-      <i :class="'el-icon-' + item.icon"></i>
-      <span slot="title">{{ item.label }}</span>
+      @click="clickMenu(item)">
+     <i :class="'el-icon-' + item.icon"></i>
+     <span slot="title">{{ item.label }}</span>
+
     </el-menu-item>
+
+
+
     <el-submenu 
       :index="item.label" 
       v-for="item in hasChildren" 
-      :key="item.path" 
-    >
+      :key="item.path">
+
       <template slot="title">
         <i :class="'el-icon-' + item.icon"></i>
         <span slot="title">{{ item.label }}</span>
       </template>
+
+
+
       <el-menu-item-group>
         <el-menu-item 
           :index="subItem.path"
           v-for="(subItem, subIndex) in item.children"
-          :key="subIndex"
-        >
+          :key="subIndex">
+
           <i :class="'el-icon-' + subItem.icon"></i>
           <span slot="title">{{ subItem.label }}</span>
         </el-menu-item>
       </el-menu-item-group>
+
     </el-submenu>
+
   </el-menu>
+
 </template>
+
+
 <style scoped>
   .el-menu {
     height: 100%;
@@ -54,6 +62,8 @@
     min-height: 400px;
   }
 </style>
+
+
 <script>
   export default {
     data() {
@@ -101,6 +111,7 @@
         ],
       };
     },
+
     methods: {
       clickMenu(item) {
         this.$router.push({ name: item.name });
