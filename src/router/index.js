@@ -3,8 +3,6 @@ import Router from 'vue-router'
 import Index from '../views/Index'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
-import RelationTransform from '../views/RelationTransform.vue'
-import AdministratorChange from '../views/AdministratorChange.vue'
 import operation from '../views/operation.vue'
 
 Vue.use(Router)
