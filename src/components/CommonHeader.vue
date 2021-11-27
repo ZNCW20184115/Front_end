@@ -1,27 +1,56 @@
 <template>
   <header>
+
+
     <div class="l-content">
       <el-button plain icon="el-icon-menu" size="mini" @click="handleMenu"></el-button>
       <el-breadcrumb >
-        <el-breadcrumb-item :to="{ path: '/Index' }" id="breadcrumb">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/Home' }" id="breadcrumb">首页</el-breadcrumb-item>
         <el-breadcrumb-item :to="current.path" v-if="current">
           {{current.label}}
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+
+    <!-- <div class="l-information">
+      <el-button type="h-button" @click.native="c-inf">消息</el-button>
+    </div> -->
+         <el-badge :value="12" class="item">
+          <el-button size="small">消息</el-button>
+         </el-badge>
+    
+
+    <div class="l-setting">
+       <el-button type="h-button" @click.native="c-set">系统设置</el-button> 
+    </div>
+
+    
     <div class="r-content">
       <el-dropdown trigger="click" size="mini">
         <span class="el-dropdown-link">
           <img :src="userImg" class="user">
         </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>个人中心</el-dropdown-item>
-          <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
-  </el-dropdown-menu>
+           <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>个人中心</el-dropdown-item>
+            <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
+           </el-dropdown-menu>
       </el-dropdown>
+
+
     </div>
   </header>
 </template>
+
+
+
 <script>
 import {mapState} from 'vuex'
 export default {
@@ -52,14 +81,27 @@ export default {
   },
 };
 </script>
+
+  
+
 <style scoped>
   header {
     display: flex;
     height: 100%;
-    align-items: center;
+    align-items:center;
     justify-content: space-between;
   }
   .l-content {
+    display: flex;
+    align-items: center;
+  }
+  .l-information {
+    color: #fff;
+    display: flex;
+    align-items:center;
+  }
+  .l-setting {
+    color: #fff;
     display: flex;
     align-items: center;
   }
@@ -75,3 +117,8 @@ export default {
     color: rgb(255, 255, 255);
   }
 </style>
+
+<style>
+      .item {
+      margin-right: 20px;}
+  </style>
