@@ -1,9 +1,24 @@
 <template>
     <div  id="app">
       <template>
+          <br/>
           <el-button @click="resetDateFilter">清除日期过滤器</el-button>
           <el-button @click="clearFilter">清除所有过滤器</el-button>
 
+          <!-- 查看其他公司员工drawer -->
+          <el-button @click="drawer = true" type="primary" style=" margin-left: 530px;">查看其他公司员工</el-button>
+          <el-drawer title="其他公司员工" :visible.sync="drawer" :with-header="false">
+            <br>&nbsp;
+            <el-autocomplete
+              v-model="state"
+              :fetch-suggestions="querySearchAsync"
+              placeholder="请输入想查看的员工姓名"
+              @select="handleSelect"
+              style="width:280px "
+            ></el-autocomplete>
+          </el-drawer>
+         
+          <br/>
           <el-table :data="tableData" style="width: 100%" max-height="1250"  ref="filterTable" >
         
           <el-table-column fixed prop="date" label="日期" sortable width="150" column-key="date" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
@@ -35,7 +50,54 @@
 
 <script>
   export default {
+    
+    
     methods: {
+      loadAll() {
+        return [
+          { "value": "韩东", "sex": "女","birthday":"1999.5.1","company":"中国移动" },
+          { "value": "韩西", "sex": "男","birthday":"1994.5.16","company":"中国移动" },
+          { "value": "韩南", "sex": "女","birthday":"1996.5.1","company":"中国移动" },
+          { "value": "韩北", "sex": "男","birthday":"1989.5.14","company":"中国移动" },
+          { "value": "韩中", "sex": "女","birthday":"1994.5.9","company":"中国移动" },
+          { "value": "韩下", "sex": "男","birthday":"1993.8.1","company":"中国移动" },
+          { "value": "韩上", "sex": "男","birthday":"1999.5.1","company":"中国移动" },
+          
+        ];
+      },
+      querySearchAsync(queryString, cb) {
+        var employees = this.employees;
+        var results = queryString ? employees.filter(this.createStateFilter(queryString)) : employees;
+
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          cb(results);
+        }, 3000 * Math.random());
+      },
+      createStateFilter(queryString) {
+        return (state) => {
+          return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+        };
+      },
+      handleSelect(item) {
+        //alert(item.value+'-'+item.sex+'-'+item.birthday+'-'+item.company);
+        this.$confirm(item.value+'-'+item.sex+'-'+item.birthday+'-'+item.company, {
+          confirmButtonText: '发起申请',
+          cancelButtonText: '取消',
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '申请成功'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消操作'
+          });          
+        });
+      },
+        
+
       clickMenu(item) {
         this.$router.push({ name: item.name });
         this.$store.commit("selectMenu", item);
@@ -54,8 +116,17 @@
         rows.splice(index, 1);
       }
     },
+    mounted() {
+      this.employees = this.loadAll();
+    },
     data() {
       return {
+        employees: [],
+        state: '',
+        timeout:  null,
+
+        drawer: false,
+
         tableData: [{
           date: '2016-05-03',
           name: '李六',
@@ -107,6 +178,8 @@
           zip: 200333
         }]
       }
-    }
+    },
+    
+
   }
 </script>
