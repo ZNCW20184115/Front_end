@@ -1,5 +1,6 @@
 <template>
-          <el-button @click="resetDateFilter">清除日期过滤器</el-button>
+<div>
+ <el-button @click="resetDateFilter">清除日期过滤器</el-button>
           <el-button @click="clearFilter">清除所有过滤器</el-button>
 
           <el-table :data="tableData" style="width: 100%" max-height="1250"  ref="filterTable" >
@@ -27,4 +28,6 @@
             </template>
           </el-table-column>
         </el-table>
+</div>
+         
       </template>
