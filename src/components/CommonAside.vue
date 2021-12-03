@@ -21,6 +21,7 @@
       :index="item.label" 
       v-for="item in hasChildren" 
       :key="item.path" 
+      @click="clickMenu(item)"
     >
       <template slot="title">
         <i class="'el-icon-' + item.icon"></i>
@@ -31,6 +32,7 @@
           :index="subItem.path"
           v-for="(subItem, subIndex) in item.children"
           :key="subIndex"
+          @click="clickMenu(subItem)"
         >
           <i :class="'el-icon-' + subItem.icon"></i>
           <span slot="title">{{ subItem.label }}</span>
@@ -79,27 +81,25 @@
             icon: "user",
           },
           {
-            label: "其他",
-            icon: "location",
+            path: "/operation",
+            label: "业务管理",
+            icon: "operation",
             children: [
-              {
-                path: "/page1",
-                name: "page1",
-                label: "页面1",
-                icon: "setting",
-                url: "Other/PageOne",
-              },
-              {
-                path: "/page2",
-                name: "page2",
-                label: "页面2",
-                icon: "setting",
-                url: "Other/PageTwo",
-              },
-            ],
+            {
+             path: "/RelationTransform",
+             name: "RelationTransform",
+             label: "关系转换",
+             icon: "setting",
+            },
+            {
+             path: "/AdministratorChange",
+             name: "AdministratorChange",
+             label: "管理员变更",
+             icon: "setting" ,
+           }]
           },
         ],
-      };
+      }
     },
     methods: {
       clickMenu(item) {
@@ -112,7 +112,7 @@
         return this.menu.filter((item) => !item.children);
       },
       hasChildren() {
-        return this.menu.filter((item) => item.children);
+        return  this.menu.filter((item) => item.children);
       },
       isCollapse() {
         return this.$store.state.tab.isCollapse;
