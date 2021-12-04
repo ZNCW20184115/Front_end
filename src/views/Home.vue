@@ -2,8 +2,8 @@
 <div >
 
   <el-row>
-  <el-col :span="24"><div class="grid-content bg-purple-dark">2</div></el-col>
-</el-row>
+  <el-col :span="24"><div class="grid-content bg-purple-dark"></div>  </el-col>
+  </el-row>
 
   <el-row :gutter="20">
   <el-col :span="16"><div class="grid-content bg-purple">
@@ -35,18 +35,21 @@
 
 
 <el-row>
-  <el-col :span="24"><div class="grid-content bg-purple-dark" id='in'>
+  <el-col :span="24">
+  
+  <div class="grid-content bg-purple-dark" id='in'>
     
+<div id=fastdiv><el-button id="fast" icon="el-icon-search" circle ></el-button>员工信息</div>
+  <div id=fastdiv><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button>录入员工信息</div>
+  <div id=fastdiv><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button>123</div>
+  <div id=fastdiv><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button>456</div>
+  <div id=fastdiv><el-button id="fast" type="success" icon="el-icon-check" circle ></el-button>核对</div>
+  <div id=fastdiv><el-button id="fast" type="info" icon="el-icon-message" circle ></el-button>消息</div>
+  <div id=fastdiv><el-button id="fast" type="warning" icon="el-icon-star-off" circle ></el-button>456</div>
+  <div id=fastdiv><el-button id="fast" type="danger" icon="el-icon-delete" circle ></el-button>789</div>
+  <div id=fastdiv><el-button id="fast" type="danger" icon="el-icon-delete" circle ></el-button>456</div>
+  
 
-  <el-button icon="el-icon-search" circle style="width:150px;height:150px;margin-bottom:15px"></el-button>
-  <el-button type="primary" icon="el-icon-edit" circle style="width:150px;height:150px;margin-bottom:15px"></el-button>
-  <el-button type="success" icon="el-icon-check" circle style="width:150px;height:150px;margin-bottom:15px"></el-button>
-  <el-button type="info" icon="el-icon-message" circle style="width:150px;height:150px;margin-bottom:15px"></el-button>
-  <el-button type="warning" icon="el-icon-star-off" circle style="width:150px;height:150px;margin-bottom:15px"></el-button>
-  <el-button type="danger" icon="el-icon-delete" circle style="width:150px;height:150px;margin-bottom:15px"></el-button>
-    
-    
-    
     </div></el-col>
 </el-row>
 
@@ -55,8 +58,24 @@
 </template>
 
 <style scoped>
+#fastdiv{
+  display: inline-block;
+  width: 125px;
+  height: 138px;
+  text-align:center;
+  margin-left:50px;
+  padding-bottom: 35px;
+}
+#fast{
+  width:125px;
+  height:125px;
+  margin-bottom:15px;
+  
+}
 #in{
-  padding-top: 50px;
+  background-color: rgb(252, 250, 246);
+  margin-top: 10px;
+  padding-top: 30px;
   padding-left: 50px;
 
 }

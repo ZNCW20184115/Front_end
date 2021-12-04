@@ -19,7 +19,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.common-header{
+  height: 100px;
+}
 .el-header{
+
   background: #333;
 }
 .el-main{

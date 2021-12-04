@@ -30,6 +30,11 @@ export default new Router({
           component:()=>import('@/views/Home.vue')
         },
         {
+          path:'/Inform',
+          name:'Inform',
+          component:()=>import('@/views/Inform.vue')
+        },
+        {
           path:'/lookuser',
           name:'lookuser',
           component:()=>import('@/views/Lookuser.vue')
