@@ -12,27 +12,20 @@
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
-</div>     
+</div>
 
-<div id="kong"></div>
-
-
+    <div id="kong">
       <router-link  to="/Inform">
       <el-badge :value="1" class="item" type="primary">
         <el-button size="small">消息</el-button>
         </el-badge>
         </router-link>
 
-
-
       <router-link  to="/Inform">
-       <el-button size="small">系统设置</el-button> 
+       <el-button size="small" class="item">系统设置</el-button>
       </router-link>
-     
 
-
-
-      <el-dropdown trigger="click" size="mini" >
+      <el-dropdown trigger="click" size="mini" id="tx">
 
         <span class="el-dropdown-link" id="toux">
           <img :src="userImg" class="user">
@@ -44,7 +37,7 @@
            </el-dropdown-menu>
 
       </el-dropdown>
-
+    </div>
   </header>
 </template>
 
@@ -59,13 +52,22 @@ header{
 
 #kong{
   display: inline-block;
-  width: 650px;
+  width: 200px;
 }
+
+.item{
+  margin: 0 6px;
+}
+
+#tx{
+  top: 10px;
+}
+
 #shouye{
   display: inline-block;
 }
 
-  
+
   .l-content {
     display: flex;
     align-items: center;
@@ -119,7 +121,7 @@ export default {
 				}).catch(() => {
 				});
 			},
-    
+
   },
   computed: {
     ...mapState({
@@ -129,6 +131,6 @@ export default {
 };
 </script>
 
-  
+
 
 
