@@ -16,13 +16,15 @@
 
     <div id="kong">
       <router-link  to="/Inform">
-      <el-badge :value="1" class="item" type="primary">
+      <el-badge :value="1" id="xiaoxi" class="item" type="primary">
         <el-button size="small">消息</el-button>
         </el-badge>
         </router-link>
 
       <router-link  to="/Inform">
-       <el-button size="small" class="item">系统设置</el-button>
+      <el-badge id="xiaoxi">
+       <el-button size="small"  class="item">系统设置</el-button>
+       </el-badge>
       </router-link>
 
       <el-dropdown trigger="click" size="mini" id="tx">
@@ -49,7 +51,9 @@ header{
   align-items: center;
   padding-top: 10px;
 }
-
+#xiaoxi{
+  bottom:10px;
+}
 #kong{
   display: inline-block;
   width: 200px;
@@ -60,7 +64,7 @@ header{
 }
 
 #tx{
-  top: 10px;
+  top: 5px;
 }
 
 #shouye{
