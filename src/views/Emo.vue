@@ -30,9 +30,9 @@
           </el-table-column>
           <el-table-column prop="apartment" label="所属部门" width="120">
           </el-table-column>
-          <el-table-column prop="address" label="地址" width="360">
+          <el-table-column prop="address" label="地址" width="260">
           </el-table-column>
-          <el-table-column prop="zip" label="电话" width="280">
+          <el-table-column prop="zip" label="电话" width="150">
           </el-table-column>
           <el-table-column fixed="right" label="操作" width="120">
             <template slot-scope="scope">
