@@ -141,6 +141,8 @@ export default {
       },
       beforeAvatarUpload(file) {
         const isJPG = file.type === 'image/jpeg';
+
+
         if (!isJPG) {
           this.$message.error('上传头像图片只能是 JPG 格式!');
         }
