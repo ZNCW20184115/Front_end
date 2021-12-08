@@ -1,59 +1,162 @@
 <template>
     <div  id="app">
-      <template>
-          <br/>
-          <el-button @click="resetDateFilter">清除日期过滤器</el-button>
-          <el-button @click="clearFilter">清除所有过滤器</el-button>
 
-          <!-- 查看其他公司员工drawer -->
-          <el-button @click="drawer = true" type="primary" style=" margin-left: 530px;">查看其他公司员工</el-button>
-          <el-drawer title="其他公司员工" :visible.sync="drawer" :with-header="false">
-            <br>&nbsp;
-            <el-autocomplete
-              v-model="state"
-              :fetch-suggestions="querySearchAsync"
-              placeholder="请输入想查看的员工姓名"
-              @select="handleSelect"
-              style="width:280px "
-            ></el-autocomplete>
-          </el-drawer>
-         
-          <br/>
-          <el-table :data="tableData" style="width: 100%" max-height="1250"  ref="filterTable" >
-        
-          <el-table-column fixed prop="date" label="日期" sortable width="150" column-key="date" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
-      :filter-method="filterHandler">
-          </el-table-column>
-          <el-table-column prop="name" label="姓名" width="120">
-          </el-table-column>
-          <el-table-column prop="sex" label="性别" width="120">
-          </el-table-column>
-          <el-table-column prop="apartment" label="所属部门" width="120">
-          </el-table-column>
-          <el-table-column prop="address" label="地址" width="260">
-          </el-table-column>
-          <el-table-column prop="zip" label="电话" width="150">
-          </el-table-column>
-          <el-table-column fixed="right" label="操作" width="120">
-            <template slot-scope="scope">
-              
-              <div id="anniu">
-                <router-link  to="/Lookuser">
-              <el-button  size="mini" type="primary" icon="el-icon-zoom-in" ></el-button>
-              </router-link>
-              </div>
-              
-              <div id="anniut"><el-button size="mini" type="primary" icon="el-icon-edit"></el-button></div>
 
-              
-              <div id="anniu"><el-button size="mini" @click.native.prevent="deleteRow(scope.$index, tableData)" type="primary" icon="el-icon-delete"></el-button></div>
+      <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="已获权限员工" name="first">
 
-              
 
-            </template>
-          </el-table-column>
-        </el-table>
-      </template>
+            <template>
+            <br/>
+            <el-button @click="resetDateFilter">清除日期过滤器</el-button>
+            <el-button @click="clearFilter">清除所有过滤器</el-button>
+
+            <!-- 查看其他公司员工drawer -->
+            <el-button @click="drawer = true" type="primary" style=" margin-left: 730px;">查看其他公司员工</el-button>
+            <el-drawer title="其他公司员工" :visible.sync="drawer" :with-header="false">
+              <br>&nbsp;
+              <el-autocomplete
+                v-model="state"
+                :fetch-suggestions="querySearchAsync"
+                placeholder="请输入想查看的员工姓名"
+                @select="handleSelect"
+                style="width:280px "
+              ></el-autocomplete>
+            </el-drawer>
+          
+            <br/>
+
+            <el-table :data="tableData" style="width: 100%" max-height="1600"  ref="filterTable" id="table1">
+          
+            <el-table-column fixed prop="date" label="日期" sortable width="150" column-key="date" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
+        :filter-method="filterHandler">
+            </el-table-column>
+            <el-table-column prop="name" label="姓名" width="120">
+            </el-table-column>
+            <el-table-column prop="sex" label="性别" width="120">
+            </el-table-column>
+            <el-table-column prop="apartment" label="所属部门" width="120">
+            </el-table-column>
+            <el-table-column prop="address" label="地址" width="200">
+            </el-table-column>
+            <el-table-column prop="zip" label="电话" width="80">
+            </el-table-column>
+            <el-table-column prop="cz" fixed="right" label="操作" width="200">
+              <template slot-scope="scope">
+                
+                <div id="anniu">
+                  <router-link  to="/Lookuser">
+                <el-button  size="mini" type="primary" icon="el-icon-zoom-in"></el-button>
+                </router-link>
+
+                </div>
+                
+                <div id="anniu"><el-button size="mini" type="primary" icon="el-icon-edit"></el-button></div>
+
+                
+                <div id="anniu"><el-button size="mini" @click.native.prevent="deleteRow(scope.$index, tableData)" type="primary" icon="el-icon-delete"></el-button></div>
+
+                
+
+              </template>
+            </el-table-column>
+
+
+          </el-table>
+        </template>
+        </el-tab-pane>
+        <el-tab-pane label="未获权限员工" name="second">
+
+
+
+          <template>
+            <br/>
+            <el-button @click="resetDateFilter">清除日期过滤器</el-button>
+            <el-button @click="clearFilter">清除所有过滤器</el-button>
+
+            
+
+            <el-table :data="tableData" style="width: 100%" max-height="1600"  ref="filterTable" id="table1">
+          
+            <el-table-column fixed prop="date" label="日期" sortable width="150" column-key="date" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
+        :filter-method="filterHandler">
+            </el-table-column>
+            <el-table-column prop="name" label="姓名" width="120">
+            </el-table-column>
+            <el-table-column prop="sex" label="性别" width="120">
+            </el-table-column>
+            <el-table-column prop="company" label="所属公司" width="360">
+            </el-table-column>
+
+            <el-table-column prop="phone" label="联系电话" width="180">
+            </el-table-column>
+            
+
+
+            <el-table-column fixed="right" label="获取权限" width="120">
+              <template slot-scope="scope">
+                
+                <div id="anniu">
+                <el-button  size="mini" type="primary" icon="el-icon-user-solid" ></el-button>
+
+                </div>
+                
+
+                
+
+              </template>
+            </el-table-column>
+
+
+
+
+          </el-table>
+        </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </el-tab-pane>
+
+        </el-tabs>
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 </template>
 
@@ -74,6 +177,9 @@
           
         ];
       },
+      handleClick(tab, event) {
+        console.log(tab, event);
+        },
       querySearchAsync(queryString, cb) {
         var employees = this.employees;
         var results = queryString ? employees.filter(this.createStateFilter(queryString)) : employees;
@@ -130,6 +236,7 @@
     },
     data() {
       return {
+        activeName: 'first',
         employees: [],
         state: '',
         timeout:  null,
@@ -195,6 +302,9 @@
 
 
 <style scoped>
+#table1{
+  margin-top: 10px;
+}
 #anniu{
   width: 20px;
   display: inline-block;
@@ -207,5 +317,8 @@
   width: 20px;
   margin-bottom: 5px;
 
+}
+#app{
+  height: 500px;
 }
 </style>

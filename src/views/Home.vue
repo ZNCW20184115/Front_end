@@ -1,5 +1,5 @@
 <template>
-<div >
+<div id="big">
 
   <el-row>
   <el-col :span="24"><div class="grid-content bg-purple-dark"></div>  </el-col>
@@ -58,6 +58,9 @@
 </template>
 
 <style scoped>
+#big{
+  margin-top: 15px;
+}
 #fastdiv{
   display: inline-block;
   width: 125px;
@@ -73,7 +76,7 @@
   
 }
 #in{
-  background-color: rgb(252, 250, 246);
+  background-color: rgb(255, 255, 255);
   margin-top: 10px;
   padding-top: 30px;
   padding-left: 50px;

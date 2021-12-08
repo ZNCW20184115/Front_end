@@ -2,8 +2,12 @@
   <div id="login1">
     <div style="display: flex; justify-content: center">
       <el-card style="width: 400px;  margin-top: 200px;">
+
         <h2>登录</h2>
-        <el-form
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="HR登录" name="first">
+          
+          <el-form
           ref="loginFormRef"
           :model="form"
           :rules="formRules"
@@ -31,6 +35,52 @@
             <el-button round @click="register">注册</el-button>
           </el-form-item>
         </el-form>
+
+
+        </el-tab-pane>
+
+
+        <el-tab-pane label="主管登录" name="second">
+
+
+          <el-form
+          ref="loginFormRef"
+          :model="form"
+          :rules="formRules"
+          label-width="80px"
+        >
+          <el-form-item prop="username" label="用户名">
+            <el-input
+              v-model="form.username"
+              autocomplete="off"
+              placeholder="请输入用户名"
+            >
+            </el-input>
+          </el-form-item>
+          <el-form-item prop="password" label="密码">
+            <el-input
+              v-model="form.password"
+              autocomplete="off"
+              placeholder="请输入密码"
+              show-password
+            >
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" round @click="login">登录 </el-button>
+            <el-button round @click="register">注册</el-button>
+          </el-form-item>
+          </el-form>
+
+
+
+
+
+        </el-tab-pane>
+        </el-tabs>
+
+
+        
       </el-card>
     </div>
   </div>
@@ -44,6 +94,8 @@ export default {
   components: {},
   data() {
     return {
+       activeName: 'first',
+
       form: {
         username: "",
         password: "",
@@ -59,6 +111,9 @@ export default {
     };
   },
   methods: {
+        handleClick(tab, event) {
+        console.log(tab, event);
+      },
     // onSubmit() {
     //   const data={username : "123", password : "123"};
     //   if(this.form.password===data.password&&this.form.username===data.username){

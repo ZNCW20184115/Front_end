@@ -8,6 +8,8 @@
           头像
           </div>
 
+
+          <div class="edf">
           <el-upload
               action="https://jsonplaceholder.typicode.com/posts/"
               list-type="picture-card"
@@ -20,7 +22,16 @@
           </el-dialog>
           </div>
 
-        <el-descriptions class="margin-top" title="用户信息" :column="3" :size="size" border>
+
+
+
+          </div>
+
+          <el-tabs v-model="activeName" @tab-click="handleClick" stretch="true" >
+          <el-tab-pane label="基本信息" name="first" id="firstlabel">
+
+
+            <el-descriptions class="margin-top" title="用户信息" :column="2" :size="size" border>
             <template slot="extra">
             <el-button type="primary" size="small">操作</el-button>
             </template>
@@ -106,6 +117,7 @@
             </template>
             <el-tag size="small">学校</el-tag>
             </el-descriptions-item>
+
             <el-descriptions-item>
             <template slot="label">
                 <i class="el-icon-office-building"></i>
@@ -113,7 +125,32 @@
             </template>
             xx省xx市xx区xx xxxx 号
             </el-descriptions-item>
-        </el-descriptions>
+
+            <el-descriptions-item>
+            <template slot="label">
+                <i class="el-icon-office-building"></i>
+                联系地址
+            </template>
+            xx省xx市xx区xx xxxx 号
+            </el-descriptions-item>
+
+            </el-descriptions>
+
+
+
+          </el-tab-pane>
+
+
+          <el-tab-pane label="配置管理" name="second">
+
+
+          </el-tab-pane>
+          
+
+
+          </el-tabs>
+
+        
         </div>
     </div>
 </template>
@@ -122,6 +159,7 @@
 export default {
     data() {
       return {
+        activeName: 'first',
         dialogImageUrl: '',
         dialogVisible: false,
         imageUrl: '',
@@ -129,6 +167,9 @@ export default {
       };
     },
     methods: {
+      handleClick(tab, event) {
+        console.log(tab, event);
+      },
        handleRemove(file, fileList) {
         console.log(file, fileList);
       },
@@ -141,8 +182,6 @@ export default {
       },
       beforeAvatarUpload(file) {
         const isJPG = file.type === 'image/jpeg';
-
-
         if (!isJPG) {
           this.$message.error('上传头像图片只能是 JPG 格式!');
         }
@@ -155,6 +194,12 @@ export default {
   }
 </script>
 <style scoped>
+.edf{
+  text-align: center;
+}
+#firstlabel{
+text-align: center;
+}
 .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
@@ -179,6 +224,7 @@ export default {
     display: block;
   }
 .idf{
+  text-align: center;
   display: inline-block;
   height: 80px;
   width: 100%;
