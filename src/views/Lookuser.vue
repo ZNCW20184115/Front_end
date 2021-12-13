@@ -33,7 +33,7 @@
 
             <el-descriptions class="margin-top" title="员工信息" :column="2" :size="size" border>
             <template slot="extra">
-            <el-button @click="editopen" type="primary" size="small" icon="el-icon-edit"></el-button>
+            <router-link  to="/Addemployee"><el-button type="primary" size="small" icon="el-icon-edit"></el-button></router-link>
             </template>
 
 
@@ -201,17 +201,6 @@ export default {
       };
     },
     methods: {
-      editopen() {
-        this.$alert('这是一段内容', '标题名称', {
-          confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
-        });
-      },
 
 
 

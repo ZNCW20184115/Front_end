@@ -58,6 +58,13 @@ export default new Router({
           component:()=>import('@/views/Inform.vue')
         },
         {
+          path:'/Addemployee',
+          name:'Addemployee',
+          component:()=>import('@/views/Addemployee.vue')
+        },
+
+
+        {
           path:'/lookuser',
           name:'lookuser',
           component:()=>import('@/views/Lookuser.vue')

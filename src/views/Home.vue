@@ -40,7 +40,7 @@
   <div class="grid-content bg-purple-dark" id='in'>
     
 <div id=fastdiv><router-link  to="/Emo"><el-button id="fast" icon="el-icon-search" circle ></el-button></router-link>员工信息</div>
-  <div id=fastdiv><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button>录入员工信息</div>
+  <div id=fastdiv><router-link  to="/Addemployee"><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button></router-link>录入员工信息</div>
   <div id=fastdiv><router-link  to="/User"><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button></router-link>用户信息</div>
   <div id=fastdiv><router-link to="/RelationTransform"><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button></router-link>关系转换</div>
   <div id=fastdiv><router-link to="/AdministratorChange"><el-button id="fast" type="success" icon="el-icon-check" circle ></el-button></router-link>管理员变更</div>

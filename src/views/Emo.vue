@@ -11,8 +11,11 @@
             <el-button @click="resetDateFilter">清除日期过滤器</el-button>
             <el-button @click="clearFilter">清除所有过滤器</el-button>
 
+
+            <router-link  to="/Addemployee"><el-button type="primary" style=" margin-left: 30px;">录入员工信息</el-button></router-link>
+
             <!-- 查看其他公司员工drawer -->
-            <el-button @click="drawer = true" type="primary" style=" margin-left: 730px;">查看其他公司员工</el-button>
+            <el-button @click="drawer = true" type="primary" style=" margin-left: 530px;">查看其他公司员工</el-button>
             <el-drawer title="其他公司员工" :visible.sync="drawer" :with-header="false">
               <br>&nbsp;
               <el-autocomplete
@@ -124,6 +127,8 @@
     
     
     methods: {
+
+
 
       editopen() {
         this.$alert('这是一段内容', '标题名称', {
