@@ -83,7 +83,7 @@
             </el-table-column>
             <el-table-column prop="name" label="姓名" width="120">
             </el-table-column>
-            <el-table-column prop="sex" label="性别" width="120">
+            <el-table-column prop="sex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
             </el-table-column>
             <el-table-column prop="company" label="所属公司" width="360">
             </el-table-column>
@@ -114,47 +114,9 @@
         </template>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </el-tab-pane>
 
         </el-tabs>
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
 
 
     </div>
