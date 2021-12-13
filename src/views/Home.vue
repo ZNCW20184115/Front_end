@@ -39,15 +39,15 @@
   
   <div class="grid-content bg-purple-dark" id='in'>
     
-<div id=fastdiv><el-button id="fast" icon="el-icon-search" circle ></el-button>员工信息</div>
+<div id=fastdiv><router-link  to="/Emo"><el-button id="fast" icon="el-icon-search" circle ></el-button></router-link>员工信息</div>
   <div id=fastdiv><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button>录入员工信息</div>
-  <div id=fastdiv><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button>123</div>
-  <div id=fastdiv><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button>456</div>
-  <div id=fastdiv><el-button id="fast" type="success" icon="el-icon-check" circle ></el-button>核对</div>
-  <div id=fastdiv><el-button id="fast" type="info" icon="el-icon-message" circle ></el-button>消息</div>
-  <div id=fastdiv><el-button id="fast" type="warning" icon="el-icon-star-off" circle ></el-button>456</div>
-  <div id=fastdiv><el-button id="fast" type="danger" icon="el-icon-delete" circle ></el-button>789</div>
-  <div id=fastdiv><el-button id="fast" type="danger" icon="el-icon-delete" circle ></el-button>456</div>
+  <div id=fastdiv><router-link  to="/User"><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button></router-link>用户信息</div>
+  <div id=fastdiv><router-link to="/RelationTransform"><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button></router-link>关系转换</div>
+  <div id=fastdiv><router-link to="/AdministratorChange"><el-button id="fast" type="success" icon="el-icon-check" circle ></el-button></router-link>管理员变更</div>
+  <div id=fastdiv><router-link  to="/Inform"><el-button id="fast" type="info" icon="el-icon-message" circle ></el-button></router-link>消息</div>
+  <div id=fastdiv><el-button id="fast" type="warning" icon="el-icon-star-off" circle ></el-button>待定</div>
+  <div id=fastdiv><el-button id="fast" type="danger" icon="el-icon-delete" circle ></el-button>待定</div>
+  <div id=fastdiv><el-button id="fast" type="danger" icon="el-icon-delete" @click.native="logout" circle ></el-button>退出登录</div>
   
 
     </div></el-col>
@@ -66,8 +66,8 @@
   width: 125px;
   height: 138px;
   text-align:center;
-  margin-left:50px;
-  padding-bottom: 35px;
+  margin-left:80px;
+  padding-bottom: 55px;
 }
 #fast{
   width:125px;
@@ -84,3 +84,24 @@
 }
 
 </style>
+
+<script>
+import {mapState} from 'vuex'
+export default {
+  methods: {
+    handleMenu() {
+      this.$store.commit("collapseMenu");
+    },
+    logout: function () {
+				var _this = this;
+				this.$confirm('确认退出吗?', '提示', {
+					//type: 'warning'
+				}).then(() => {
+					_this.$router.push({ name: "Login" });
+				}).catch(() => {
+				});
+			},
+  },
+  
+};
+</script>

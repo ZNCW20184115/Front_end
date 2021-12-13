@@ -26,16 +26,16 @@
           
             <br/>
 
-            <el-table :data="tableData" style="width: 100%" max-height="1600"  ref="filterTable" id="table1">
+            <el-table :data="tableData1" style="width: 100%" max-height="1600"  ref="filterTable" id="table1">
           
             <el-table-column fixed prop="date" label="日期" sortable width="150" column-key="date" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
         :filter-method="filterHandler">
             </el-table-column>
             <el-table-column prop="name" label="姓名" width="120">
             </el-table-column>
-            <el-table-column prop="sex" label="性别" width="120">
+            <el-table-column prop="sex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
             </el-table-column>
-            <el-table-column prop="apartment" label="所属部门" width="120">
+            <el-table-column prop="apartment" label="所属公司" width="120">
             </el-table-column>
             <el-table-column prop="address" label="地址" width="200">
             </el-table-column>
@@ -48,15 +48,12 @@
                   <router-link  to="/Lookuser">
                 <el-button  size="mini" type="primary" icon="el-icon-zoom-in"></el-button>
                 </router-link>
-
                 </div>
                 
-                <div id="anniu"><el-button size="mini" type="primary" icon="el-icon-edit"></el-button></div>
 
                 
-                <div id="anniu"><el-button size="mini" @click.native.prevent="deleteRow(scope.$index, tableData)" type="primary" icon="el-icon-delete"></el-button></div>
+                <div id="anniu"><el-button size="mini" @click="deleteopen" @click.native.prevent="deleteRow(scope.$index, tableData)" type="primary" icon="el-icon-delete"></el-button></div>
 
-                
 
               </template>
             </el-table-column>
@@ -85,10 +82,10 @@
             </el-table-column>
             <el-table-column prop="sex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
             </el-table-column>
-            <el-table-column prop="company" label="所属公司" width="360">
+            <el-table-column prop="apartment" label="所属公司" width="360" >
             </el-table-column>
 
-            <el-table-column prop="phone" label="联系电话" width="180">
+            <el-table-column prop="zip" label="联系电话" width="180">
             </el-table-column>
             
 
@@ -127,6 +124,42 @@
     
     
     methods: {
+
+      editopen() {
+        this.$alert('这是一段内容', '标题名称', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
+      },
+
+      deleteopen() {
+        this.$confirm('此操作将永久删除该员工信息, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+      },
+
+      
+
+
+
+
       loadAll() {
         return [
           { "value": "韩东", "sex": "女","birthday":"1999.5.1","company":"中国移动" },
@@ -209,52 +242,96 @@
           date: '2016-05-03',
           name: '李六',
           sex: '男',
-          apartment: '人事部',
+          apartment: 'A公司',
           address: '...',
           zip: 200333
         }, {
+          date: '2016-05-08',
+          name: '王小虎',
+          sex: '男',
+          apartment: 'C公司',
+          address: '...',
+          zip: 200333
+        },{
           date: '2016-05-02',
           name: '王小虎',
           sex: '男',
-          apartment: '后勤部',
+          apartment: 'B公司',
           address: '...',
           zip: 200333
         }, {
           date: '2016-05-04',
           name: '张大头',
           sex: '男',
-          apartment: '人事部',
+          apartment: 'A公司',
           address: '...',
           zip: 200333
         }, {
           date: '2016-05-01',
           name: '贺伯伯',
           sex: '男',
-          apartment: '炊事部',
+          apartment: 'B公司',
           address: '...',
           zip: 200333
         }, {
           date: '2016-05-08',
           name: '蒋卫慧',
           sex: '女',
-          apartment: '人事部',
+          apartment: 'A公司',
           address: '...',
           zip: 200333
         }, {
           date: '2016-05-06',
           name: '王小虎',
           sex: '男',
-          apartment: '人事部',
+          apartment: 'A公司',
           address: '...',
           zip: 200333
         }, {
           date: '2016-05-07',
           name: '卢阿姨',
           sex: '女',
-          apartment: '董事会',
+          apartment: 'A公司',
+          address: '...',
+          zip: 200333
+        }],
+
+
+        tableData1: [{
+          date: '2016-05-03',
+          name: '汤姆斯克鲁斯',
+          sex: '男',
+          apartment: 'WB公司',
+          address: '...',
+          zip: 200333
+        }, {
+          date: '2016-05-08',
+          name: '余华',
+          sex: '男',
+          apartment: 'W公司',
+          address: '...',
+          zip: 200333
+        }, {
+          date: '2016-05-06',
+          name: '克里斯汉克斯',
+          sex: '男',
+          apartment: 'WB公司',
+          address: '...',
+          zip: 200333
+        }, {
+          date: '2016-05-07',
+          name: '玛丽莲梦露',
+          sex: '女',
+          apartment: 'WB公司',
           address: '...',
           zip: 200333
         }]
+
+
+
+
+
+
       }
     },
     
