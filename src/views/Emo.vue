@@ -55,7 +55,7 @@
                 
 
                 
-                <div id="anniu"><el-button size="mini" @click="deleteopen" @click.native.prevent="deleteRow(scope.$index, tableData)" type="primary" icon="el-icon-delete"></el-button></div>
+                <div id="anniu"><el-button size="mini" @click="deleteopen" @click.native.prevent="deleteRow(scope.$index, tableData1)" type="primary" icon="el-icon-delete"></el-button></div>
 
 
               </template>
