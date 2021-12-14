@@ -1,31 +1,7 @@
 <template>
     <div>
         <div>
-          <div class="demo-type">
-
-          <div class="idf">
-          <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-          头像
-          </div>
-
-
-          <div class="edf">
-          <el-upload
-              action="https://jsonplaceholder.typicode.com/posts/"
-              list-type="picture-card"
-              :on-preview="handlePictureCardPreview"
-              :on-remove="handleRemove">
-              <i class="el-icon-plus"></i>
-            </el-upload>
-            <el-dialog :visible.sync="dialogVisible">
-              <img width="100%" :src="dialogImageUrl" alt="">
-          </el-dialog>
-          </div>
-
-
-
-
-          </div>
+          
 
           <el-tabs v-model="activeName" @tab-click="handleClick" stretch="true" >
           <el-tab-pane label="基本信息" name="first" id="firstlabel">
@@ -196,14 +172,10 @@ export default {
         activeName: 'first',
         dialogImageUrl: '',
         dialogVisible: false,
-        imageUrl: '',
         size: ''
       };
     },
     methods: {
-
-
-
       handleClick(tab, event) {
         console.log(tab, event);
       },
@@ -214,56 +186,14 @@ export default {
         this.dialogImageUrl = file.url;
         this.dialogVisible = true;
       },
-      handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
-      },
-      beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
-        if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
-        }
-        return isJPG && isLt2M;
-      }
+      
     }
   }
 </script>
 <style scoped>
-.edf{
-  text-align: center;
-}
+
 #firstlabel{
 text-align: center;
 }
-.avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader .el-upload:hover {
-    border-color: #409EFF;
-  }
-  .avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
-.idf{
-  text-align: center;
-  display: inline-block;
-  height: 80px;
-  width: 100%;
-}
+
 </style>

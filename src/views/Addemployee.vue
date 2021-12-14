@@ -81,6 +81,36 @@
 </el-form>    
 -->
 <h1 align="center">录入员工信息</h1>
+<div class="demo-type">
+
+          <div class="idf">
+          <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+          头像
+          </div>
+
+
+          <div class="edf">
+          <el-upload
+              action="https://jsonplaceholder.typicode.com/posts/"
+              list-type="picture-card"
+              :on-preview="handlePictureCardPreview"
+              :on-remove="handleRemove">
+              <i class="el-icon-plus"></i>
+            </el-upload>
+            <el-dialog :visible.sync="dialogVisible">
+              <img width="100%" :src="dialogImageUrl" alt="">
+          </el-dialog>
+          </div>
+
+
+
+
+          </div>
+
+
+
+
+
 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
   <el-form-item label="员工姓名" prop="name">
     <el-input v-model="ruleForm.name"></el-input>
@@ -169,6 +199,7 @@
   export default {
     data() {
       return {
+        imageUrl: '',
         ruleForm: {
           name: '',
           sex: '',
@@ -266,6 +297,19 @@
       };
     },
     methods: {
+      handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -284,11 +328,43 @@
 </script>
 
 <style scoped>
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 98px;
+    height: 98px;
+    line-height: 98px;
+    text-align: center;
+  }
+  .avatar {
+    width: 98px;
+    height: 98px;
+    display: block;
+  }
+.idf{
+  text-align: center;
+  display: inline-block;
+  height: 80px;
+  width: 100%;
+}
+.edf{
+  text-align: center;
+}
 #bigform{
-    margin-top: 25px;
+    margin-top: 10px;
 }
 .el-form{
-    margin-top: 100px;
+    margin-top: 38px;
     margin-left: 100px;
 }
 .el-form-item{
