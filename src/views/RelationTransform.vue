@@ -12,10 +12,12 @@
             <el-table-column prop="in" label="转入企业" width="250"></el-table-column>
             <!-- 状态 -->
             <el-table-column prop="IN_tag" label="状态" width="100" 
-                 :filters="[{ text: '已处理', value: '已处理' }, { text: '未处理', value: '未处理' }]"
+                 :filters="[{ text: '已同意', value: '已同意' },
+                 { text: '未处理', value: '未处理' },
+                { text: '未同意', value: '未同意' }]"
                  :filter-method="filterTag" filter-placement="bottom-end">
                 <template slot-scope="scope">
-                    <el-tag :type="scope.row.IN_tag === '已处理' ? 'primary' : 'success'"
+                    <el-tag :type="scope.row.IN_tag === '未处理' ? 'primary' : 'success'"
                       disable-transitions>{{scope.row.IN_tag}}</el-tag>
                 </template>
             </el-table-column>
@@ -39,11 +41,12 @@
           <el-table-column prop="Used_in" label="原先在职企业" width="250"></el-table-column>
           <!-- 状态 -->
           <el-table-column prop="OUT_tag" label="状态" width="100" 
-           :filters="[{ text: '已处理', value: '已处理' },
-           { text: '未处理', value: '未处理' }]"
+           :filters="[{ text: '已同意', value: '已同意' },
+           { text: '未处理', value: '未处理' },
+           { text: '未同意', value: '未同意' }]"
            :filter-method="filterTag" filter-placement="bottom-end">
               <template slot-scope="scope">
-                <el-tag :type="scope.row.OUT_tag === '已处理' ? 'primary' : 'success'" disable-transitions>
+                <el-tag :type="scope.row.OUT_tag === '未处理' ? 'primary' : 'success'" disable-transitions>
                  {{scope.row.OUT_tag}}
                 </el-tag>
               </template>
@@ -72,12 +75,12 @@
           IN_date: '2016-05-02',
           IN_name: '王小虎',
           in: '上海市普陀区金沙江路 1518 弄',
-          IN_tag: '已处理'
+          IN_tag: '已同意'
         }, {
           IN_date: '2016-05-04',
           IN_name: '王小虎',
           in: '上海市普陀区金沙江路 1517 弄',
-          IN_tag: '已处理'
+          IN_tag: '已拒绝'
         }, {
           IN_date: '2016-05-01',
           IN_name: '王小虎',
@@ -92,7 +95,7 @@
           IN_date: '2016-05-04',
           IN_name: '王小虎',
           in: '上海市普陀区金沙江路 1517 弄',
-          IN_tag: '已处理'
+          IN_tag: '已同意'
         }, {
           IN_date: '2016-05-01',
           IN_name: '王小虎',
@@ -111,12 +114,12 @@
           OUT_date: '2016-05-02',
           OUT_name: '王小虎',
           Used_in: '上海市普陀区金沙江路 1518 弄',
-          OUT_tag: '已处理'
+          OUT_tag: '已拒绝'
         }, {
           OUT_date: '2016-05-04',
           OUT_name: '王小虎',
           Used_in: '上海市普陀区金沙江路 1517 弄',
-          OUT_tag: '已处理'
+          OUT_tag: '已同意'
         }, {
           OUT_date: '2016-05-01',
           OUT_name: '王小虎',
@@ -131,7 +134,7 @@
           OUT_date: '2016-05-04',
           OUT_name: '王小虎',
           Used_in: '上海市普陀区金沙江路 1517 弄',
-          OUT_tag: '已处理'
+          OUT_tag: '已拒绝'
         }, {
           OUT_date: '2016-05-01',
           OUT_name: '王小虎',
@@ -149,21 +152,21 @@
     methods: {
       //操作栏同意键单击响应函数in
       accept_in(tab,event){
-        event.IN_tag="已处理";
+        event.IN_tag="已同意";
         //event.tag
       },
       //操作栏同意键单击响应函数out
       accept_out(tab,event){
-        event.OUT_tag="已处理";
+        event.OUT_tag="已同意";
         //event.tag
       },
       //操作栏拒绝键单击响应函数in
       reject_in(tab,event){
-        event.IN_tag="已处理";
+        event.IN_tag="已拒绝";
       },
       //操作栏拒绝键单击响应函数out
       reject_out(tab,event){
-        event.OUT_tag="已处理";
+        event.OUT_tag="已拒绝";
       },
       handleClick(tab, event) {
         console.log(tab, event);
