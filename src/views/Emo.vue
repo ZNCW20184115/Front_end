@@ -15,7 +15,7 @@
             <router-link  to="/Addemployee"><el-button type="primary" style=" margin-left: 30px;">录入员工信息</el-button></router-link>
 
             <!-- 查看其他公司员工drawer -->
-            <el-button @click="drawer = true" type="primary" style=" margin-left: 530px;">查看其他公司员工</el-button>
+            <el-button @click="drawer = true" type="primary" style=" margin-left: 530px;" id="lookother">查看其他公司员工</el-button>
             <el-drawer title="其他公司员工" :visible.sync="drawer" :with-header="false">
               <br>&nbsp;
               <el-autocomplete
@@ -94,7 +94,8 @@
 
 
             <el-table-column fixed="right" label="获取权限" width="120">
-              <template slot-scope="scope">
+              <template >
+                <!-- slot-scope="scope" -->
                 
                 <div id="anniu">
                 <el-button  size="mini" type="primary" icon="el-icon-user-solid" ></el-button>
@@ -167,13 +168,13 @@
 
       loadAll() {
         return [
-          { "value": "韩东", "sex": "女","birthday":"1999.5.1","company":"中国移动" },
-          { "value": "韩西", "sex": "男","birthday":"1994.5.16","company":"中国移动" },
-          { "value": "韩南", "sex": "女","birthday":"1996.5.1","company":"中国移动" },
-          { "value": "韩北", "sex": "男","birthday":"1989.5.14","company":"中国移动" },
-          { "value": "韩中", "sex": "女","birthday":"1994.5.9","company":"中国移动" },
-          { "value": "韩下", "sex": "男","birthday":"1993.8.1","company":"中国移动" },
-          { "value": "韩上", "sex": "男","birthday":"1999.5.1","company":"中国移动" },
+          { "value": "王一", "sex": "女","birthday":"1999.5.1","company":"中国移动" },
+          { "value": "李二", "sex": "男","birthday":"1994.5.16","company":"中国移动" },
+          { "value": "刘三", "sex": "女","birthday":"1996.5.1","company":"中国移动" },
+          { "value": "赵四", "sex": "男","birthday":"1989.5.14","company":"中国移动" },
+          { "value": "陈无", "sex": "女","birthday":"1994.5.9","company":"中国移动" },
+          { "value": "金星", "sex": "男","birthday":"1993.8.1","company":"中国移动" },
+          { "value": "张刘", "sex": "男","birthday":"1999.5.1","company":"中国移动" },
           
         ];
       },
@@ -364,5 +365,10 @@
 }
 #app{
   height: 500px;
+}
+#lookother{
+  float: right;
+  margin-top: -40px;
+  margin-right:115px;
 }
 </style>
