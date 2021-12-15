@@ -41,8 +41,6 @@
 
 
         <el-tab-pane label="主管登录" name="second">
-
-
           <el-form
           ref="loginFormRef"
           :model="form"
