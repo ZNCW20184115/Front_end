@@ -16,7 +16,7 @@
 
     <div id="kong">
       <router-link  to="/Inform">
-      <el-badge :value="7" id="xiaoxi" class="item" type="primary">
+      <el-badge :value="4" id="xiaoxi" class="item" type="primary">
         <el-button size="small">消息</el-button>
         </el-badge>
         </router-link>

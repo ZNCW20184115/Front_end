@@ -1,18 +1,28 @@
 <template>
     <div  id="app">
-
-
-      <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="已获权限员工" name="first">
-
-
-            <template>
             <br/>
-            <el-button @click="resetDateFilter">清除日期过滤器</el-button>
-            <el-button @click="clearFilter">清除所有过滤器</el-button>
+            <el-select
+              v-model="value"
+              filterable
+              remote
+              reserve-keyword
+              placeholder="请输入所查找人姓名"
+              :remote-method="remoteMethod"
+              :loading="loading">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
 
+            <!--<el-button @click="resetDateFilter">清除日期过滤器</el-button>-->
+            <!--<el-button @click="clearFilter">清除所有过滤器</el-button>-->
 
-            <router-link  to="/Addemployee"><el-button type="primary" style=" margin-left: 30px;">录入员工信息</el-button></router-link>
+            <el-button type="primary" style=" margin-left: 3px;">搜索</el-button>
+            <router-link  to="/Addemployee"><el-button type="primary" style=" margin-left: 580px;">录入员工信息</el-button></router-link>
+            
 
             <!-- 查看其他公司员工drawer -->
             <el-button @click="drawer = true" type="primary" style=" margin-left: 530px;" id="lookother">查看其他公司员工</el-button>
@@ -28,6 +38,12 @@
             </el-drawer>
           
             <br/>
+            <br>
+
+      <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="已获权限员工" name="first">
+
+            <template>
 
             <el-table :data="tableData1" style="width: 100%" max-height="1600"  ref="filterTable" id="table1">
           
@@ -70,9 +86,7 @@
 
 
           <template>
-            <br/>
-            <el-button @click="resetDateFilter">清除日期过滤器</el-button>
-            <el-button @click="clearFilter">清除所有过滤器</el-button>
+          
 
             
 
@@ -91,24 +105,17 @@
             <el-table-column prop="zip" label="联系电话" width="180">
             </el-table-column>
             
-
-
             <el-table-column fixed="right" label="获取权限" width="120">
               <template >
-                <!-- slot-scope="scope" -->
+                <!--  slot-scope="scope"-->
                 
                 <div id="anniu">
                 <el-button  size="mini" type="primary" icon="el-icon-user-solid" ></el-button>
 
                 </div>
-                
-
-                
-
+                            
               </template>
             </el-table-column>
-
-
 
 
           </el-table>
@@ -128,6 +135,20 @@
     
     
     methods: {
+      remoteMethod(query) {
+        if (query !== '') {
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+            this.options = this.list.filter(item => {
+              return item.label.toLowerCase()
+                .indexOf(query.toLowerCase()) > -1;
+            });
+          }, 200);
+        } else {
+          this.options = [];
+        }
+      },
 
 
 
@@ -162,10 +183,6 @@
       },
 
       
-
-
-
-
       loadAll() {
         return [
           { "value": "王一", "sex": "女","birthday":"1999.5.1","company":"中国移动" },
@@ -235,8 +252,38 @@
     mounted() {
       this.employees = this.loadAll();
     },
+    mounted() {
+      this.list = this.states.map(item => {
+        return { value: `value:${item}`, label: `${item}` };
+      });
+    },
     data() {
       return {
+
+        options: [],
+        value: [],
+        list: [],
+        loading: false,
+        states: ["汤姆汉克斯", "卢阿姨", "余华",
+        "克里斯汉克斯", "玛丽莲梦露", "李六",
+        "王小虎", "张大头", "贺伯伯",
+        "Georgia", "Hawaii", "Idaho", "Illinois",
+        "Indiana", "Iowa", "Kansas", "Kentucky",
+        "Louisiana", "Maine", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota",
+        "Mississippi", "Missouri", "Montana",
+        "Nebraska", "Nevada", "New Hampshire",
+        "New Jersey", "New Mexico", "New York",
+        "North Carolina", "North Dakota", "Ohio",
+        "Oklahoma", "Oregon", "Pennsylvania",
+        "Rhode Island", "South Carolina",
+        "South Dakota", "Tennessee", "Texas",
+        "Utah", "Vermont", "Virginia",
+        "Washington", "West Virginia", "Wisconsin",
+        "Wyoming"],
+        
+
+
         activeName: 'first',
         employees: [],
         state: '',
@@ -332,11 +379,6 @@
           address: '...',
           zip: 200333
         }]
-
-
-
-
-
 
       }
     },
