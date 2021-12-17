@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-          
+
 
           <el-tabs v-model="activeName" @tab-click="handleClick" stretch="true" >
           <el-tab-pane label="基本信息" name="first" id="firstlabel">
@@ -196,17 +196,19 @@
             </el-table>
 
           </el-tab-pane>
-          
+
 
 
           </el-tabs>
 
-        
+
         </div>
     </div>
 </template>
 
 <script>
+import request from "../utils/request";
+
 export default {
     data() {
       return {
@@ -268,6 +270,53 @@ export default {
       };
     },
     methods: {
+      load(){
+        this.loading = true
+        request.get("/employee/{id}",{
+          params:{
+            employeeId: this.form.id
+          }
+        }).then(res => {
+          this.loading = false
+          this.tableData = res.data.records
+        })
+      },
+
+      update(){
+        if(this.form.id){ //更新
+          request.put("/employee/update", this.form).then(res => {
+            console.log(res)
+          })
+          if(res.code === '0'){
+            this.$message({
+              type:"success",
+              message: "操作成功"
+            })
+          } else {
+            this.$message({
+              type:"error",
+              message: res.msg
+            })
+          }
+        } else { //新增
+          request.post("/employee/update", this.form).then(res => {
+            console.log(res)
+          })
+          if(res.code === '0'){
+            this.$message({
+              type:"success",
+              message: "操作成功"
+            })
+          } else {
+            this.$message({
+              type:"error",
+              message: res.msg
+            })
+          }
+        }
+
+
+      },
       handleClick(tab, event) {
         console.log(tab, event);
       },
@@ -304,7 +353,7 @@ export default {
                         radius: '50%',//调大小
                         startAngle: 90,
                         splitNumber: 5,//雷达图圈数设置
-                        //雷达图形状圆形    	
+                        //雷达图形状圆形
                         // shape:'circle',
                         name: {
                             formatter: '{value}',
@@ -339,7 +388,7 @@ export default {
                                 max: 100
                             }
                         ],
-                        
+
                         splitArea: {
                             show:true,
                             areaStyle: {
@@ -361,9 +410,9 @@ export default {
                                 color: '#666666	'
                             }
                         },
-                        
+
                     },
-                
+
                 series: [{
                         name: '详细信息',
                         type: 'radar',
@@ -379,7 +428,7 @@ export default {
                         data: [{
                             //设置各个指标的值
                                 value: [67, 76,67, 88, 87],
-    //									name: '图一', 
+    //									name: '图一',
                                 //让数值在拐点处显示
                                 label:{
                                     show:true,
@@ -423,5 +472,5 @@ text-align: center;
     /* align-items: center; */
     /* justify-content: center;*/
     margin-top: 20px;;
-} 
+}
 </style>

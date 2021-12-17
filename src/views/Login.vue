@@ -6,7 +6,7 @@
         <h2>登录</h2>
         <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="HR登录" name="first">
-          
+
           <el-form
           ref="loginFormRef"
           :model="form"
@@ -78,7 +78,7 @@
         </el-tabs>
 
 
-        
+
       </el-card>
     </div>
   </div>
@@ -86,6 +86,8 @@
 
 <script>
 // @ is an alias to /src
+
+import request from "../utils/request";
 
 export default {
   name: "Login",
@@ -121,22 +123,20 @@ export default {
     //   }
     // },
     login() {
-      this.$refs.loginFormRef.validate(async (valid) => {
-        if (valid) {
-          const data = { 
-            username: "123", 
-            password: "123" 
-          };
-          if (
-            this.form.password === data.password &&
-            this.form.username === data.username
-          ) {
-             this.$router.push({ name: "home" });
-          } else {
-            return this.$message.error("用户名或密码错误!");
-          }
+      request.post("/user/login", this.form).then(res => {
+        if(res.code === '0'){
+          this.$message({
+            type:"success",
+            message: "登录成功"
+          })
+          this.$router.push("/Home")
+        } else {
+          this.$message({
+            type:"error",
+            message: res.msg
+          })
         }
-      });
+      })
     },
     register() {
       this.$router.push({ name: "Register" });
@@ -149,12 +149,12 @@ export default {
   width: 100%;
   height: 100%;
   background-image: url("../assets/images/bg_login.jpg");
-  background-size:100% 100%; 
+  background-size:100% 100%;
   position: fixed;
   top: 0;
   left: 0;
 }
 .el-form-item {
-  margin-bottom: 30px;  
+  margin-bottom: 30px;
 }
 </style>

@@ -23,6 +23,8 @@
 <script>
 // @ is an alias to /src
 
+import request from "../utils/request";
+
 export default {
   name: "Register",
   components: {},
@@ -36,8 +38,11 @@ export default {
   },
   methods: {
     onSubmit() {
+      request.post("/user", this.form).then(res => {
+        console.log(res)
+      })
       alert("创建成功");
-      this.$router.push({ name: "home" });
+      this.$router.push("/")
     },
     onClick() {
       this.$router.push("/");
@@ -50,7 +55,7 @@ export default {
   width: 100%;
   height: 100%;
   background-image: url("../assets/images/bg_login.jpg");
-  background-size:100% 100%; 
+  background-size:100% 100%;
   position: fixed;
   top: 0;
   left: 0;
