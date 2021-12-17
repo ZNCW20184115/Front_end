@@ -151,8 +151,49 @@
           </el-tab-pane>
 
 
-          <el-tab-pane label="员工管理" name="second">暂无数据
+          <el-tab-pane label="员工管理" name="second">
+            <div id="myChart" style="height:450px;width:600px;"></div>
 
+            <el-table
+                :data="tableData"
+                style="width: 100%">
+                <el-table-column
+                    sortable
+                    prop="date"
+                    label="日期"
+                    width="120">
+                </el-table-column>
+                <el-table-column
+                prop="attitude"
+                label="工作态度"
+                width="105">
+                </el-table-column>
+                <el-table-column
+                prop="ability"
+                label="业务水平"
+                width="105">
+                </el-table-column>
+                <el-table-column
+                prop="jichushuiping"
+                label="基础水平"
+                width="105">
+                </el-table-column>
+                <el-table-column
+                prop="zerengan"
+                label="责任感"
+                width="105">
+                </el-table-column>
+                <el-table-column
+                prop="teamwork"
+                label="团队合作能力"
+                width="105">
+                </el-table-column>
+                <el-table-column
+                prop="study"
+                label="学习能力"
+                width="105">
+                </el-table-column>
+            </el-table>
 
           </el-tab-pane>
           
@@ -172,7 +213,58 @@ export default {
         activeName: 'first',
         dialogImageUrl: '',
         dialogVisible: false,
-        size: ''
+        size: '',
+        tableData:[
+            {
+                date:'2021-01',
+                attitude:'100',
+                ability:'95',
+                jichushuiping:'88',
+                zerengan:'84',
+                teamwork:'77',
+                study:'78',
+            },{
+                date:'2021-02',
+                attitude:'100',
+                ability:'95',
+                jichushuiping:'88',
+                zerengan:'84',
+                teamwork:'77',
+                study:'78',
+            },{
+                date:'2021-03',
+                attitude:'100',
+                ability:'95',
+                jichushuiping:'88',
+                zerengan:'84',
+                teamwork:'77',
+                study:'78',
+            },{
+                date:'2021-04',
+                attitude:'100',
+                ability:'95',
+                jichushuiping:'88',
+                zerengan:'84',
+                teamwork:'77',
+                study:'78',
+            },{
+                date:'2021-05',
+                attitude:'100',
+                ability:'95',
+                jichushuiping:'88',
+                zerengan:'84',
+                teamwork:'77',
+                study:'78',
+            },{
+                date:'2021-06',
+                attitude:'100',
+                ability:'95',
+                jichushuiping:'88',
+                zerengan:'84',
+                teamwork:'77',
+                study:'78',
+            },
+        ]
       };
     },
     methods: {
@@ -186,8 +278,139 @@ export default {
         this.dialogImageUrl = file.url;
         this.dialogVisible = true;
       },
-      
-    }
+      draw() {
+            //初始化echarts实例
+            let myChart = this.$echarts.init(document.getElementById('myChart'))
+            //绘制图表
+            var option = {
+                title: {
+                    text: '员工历史考核数据',
+                    x:'center',
+                    y:'top'
+                },
+                grid:{//同radar里的center[]
+                    position:"center"
+                },
+                tooltip:{
+                    confine:true,
+                    enterable:true //鼠标是否可以移动到tooltip区域内
+                },
+                //多个线条时，使用时name:'图一'区分
+                // legend: {
+                //     // data: ['图一', '图二']
+                // },
+                radar: {
+                        //center: ['50%', '40%'],//调位置
+                        radius: '50%',//调大小
+                        startAngle: 90,
+                        splitNumber: 5,//雷达图圈数设置
+                        //雷达图形状圆形    	
+                        // shape:'circle',
+                        name: {
+                            formatter: '{value}',
+                            textStyle: {
+                                color: '#36648B',
+                                fontWeight: 'bold'
+                            }
+                        },
+                        //雷达图的指示器，指定雷达图的多个维度
+                        indicator: [{
+                                text: '工作态度',
+                                max: 100
+                            },
+                            {
+                                text: '业务水平',
+                                max: 100
+                            },
+                            {
+                                text: '基础水平',
+                                max: 100
+                            },
+                            {
+                                text: '责任感',
+                                max: 100
+                            },
+                            {
+                                text: '团队合作能力',
+                                max: 100
+                            },
+                            {
+                                text: '学习能力',
+                                max: 100
+                            }
+                        ],
+                        
+                        splitArea: {
+                            show:true,
+                            areaStyle: {
+                                color: ['#CCCCCC',//图表背景颜色
+                                ]
+                            }
+                        },
+                        splitLine: {
+                            show:true,
+                            lineStyle: {
+                                width:1,
+                                color: '#666666	'//网格颜色
+                            }
+                        },
+                        //雷达图中间射线的颜色
+                        axisLine: {
+                            show:true,
+                            lineStyle: {
+                                color: '#666666	'
+                            }
+                        },
+                        
+                    },
+                
+                series: [{
+                        name: '详细信息',
+                        type: 'radar',
+                        symbol: 'circle',//拐点样式
+                        symbolSize:6,//拐点大小\
+                        areaStyle:{  //拐点颜色
+                            normal:{
+                                width:1,
+                                opacity:0.3,
+                                color:'#36648B',
+                            }
+                        },
+                        data: [{
+                            //设置各个指标的值
+                                value: [67, 76,67, 88, 87],
+    //									name: '图一', 
+                                //让数值在拐点处显示
+                                label:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.value
+                                    }
+                                },
+                                //设置区域边框和区域的颜色
+                                itemStyle:{
+                                    normal:{
+                                       // color:'rgba(255, 255, 0, 1)',
+                                        color:'#36648B',
+                                        lineStyle:{
+                                            color:'rgba(255, 255, 0, 1)'
+                                        }
+                                    }
+                                }
+                        },
+                        ]
+                },
+                ]
+            }
+            //防止越界，重绘echarts（例如屏幕缩小，图标随屏幕适应）
+            window.onresize = myChart.resize;
+            myChart.setOption(option);; //设置option
+        }
+
+    },
+    mounted() {
+        this.draw()
+    },
   }
 </script>
 <style scoped>
@@ -195,5 +418,10 @@ export default {
 #firstlabel{
 text-align: center;
 }
-
+#myChart{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center;*/
+    margin-top: 20px;;
+} 
 </style>
