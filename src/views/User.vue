@@ -49,12 +49,6 @@
                     <el-input v-model="ruleForm.name"></el-input>
                   </el-form-item>
 
-                  <el-form-item label="性别" prop="sex" style="width:300px;">
-                    <el-select v-model="ruleForm.sex" placeholder="请选择性别">
-                      <el-option label="男" value="男"></el-option>
-                      <el-option label="女" value="女"></el-option>
-                    </el-select>
-                  </el-form-item>
 
                   <el-form-item label="员工编号" prop="eid">
                     <el-input v-model="ruleForm.eid"></el-input>
@@ -77,9 +71,10 @@
           <el-col class="el-col2" :span="14">
             <h2>主管名单</h2>
             <el-table ref="filterTable" :data="ZGtableData" style="width: 100%">
-              <el-table-column sortable prop="ZGdepartment" label="部门名称" width="180"></el-table-column>
-              <el-table-column prop="ZGname" label="主管名称" width="180"></el-table-column>
-              <el-table-column prop="ZGxianRenzhiWu" label="现任职务" width="180"></el-table-column>
+              <el-table-column sortable prop="ZGdepartment" label="部门名称" width="135"></el-table-column>
+              <el-table-column prop="ZGname" label="主管名称" width="135"></el-table-column>
+              <el-table-column prop="eid" label="员工编号" width="135"></el-table-column>
+              <el-table-column prop="ZGxianRenzhiWu" label="现任职务" width="135"></el-table-column>
               <el-table-column
                 label="操作"
                 width="50">
@@ -99,13 +94,6 @@
                   <h3 style="text-align:center;">添加新主管</h3>
                   <el-form-item label="主管姓名" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
-                  </el-form-item>
-
-                  <el-form-item label="性别" prop="sex" style="width:300px;">
-                    <el-select v-model="ruleForm.sex" placeholder="请选择性别">
-                      <el-option label="男" value="男"></el-option>
-                      <el-option label="女" value="女"></el-option>
-                    </el-select>
                   </el-form-item>
 
                   <el-form-item label="员工编号" prop="eid">
@@ -175,34 +163,42 @@
         ZGtableData:[{
           ZGdepartment:'财务部',
           ZGname:'Jacob',
+          eid:'12321414',
           ZGxianRenzhiWu:'部长',
         },{
           ZGdepartment:'技术部',
           ZGname:'Edward',
+          eid:'12321414',
           ZGxianRenzhiWu:'部长',
         },{
           ZGdepartment:'营销部',
           ZGname:'Jacob',
+          eid:'12321414',
           ZGxianRenzhiWu:'部长',
         },{
           ZGdepartment:'销售部',
           ZGname:'Jacob',
+          eid:'12321414',
           ZGxianRenzhiWu:'部长',
         },{
           ZGdepartment:'财务部',
           ZGname:'Jacob',
+          eid:'12321414',
           ZGxianRenzhiWu:'部长',
         },{
           ZGdepartment:'技术部',
           ZGname:'Edward',
+          eid:'12321414',
           ZGxianRenzhiWu:'部长',
         },{
           ZGdepartment:'营销部',
           ZGname:'Jacob',
+          eid:'12321414',
           ZGxianRenzhiWu:'部长',
         },{
           ZGdepartment:'销售部',
           ZGname:'Jacob',
+          eid:'12321414',
           ZGxianRenzhiWu:'部长',
         }
         ],
@@ -215,55 +211,21 @@
           eid: '',
           apartment: '',
           job: '',
-          name: '',
-          type: [],
-          resource: ''
         },
         rules: {
           name: [
-            { required: true, message: '请输入员工姓名', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+            { required: true, message: '请输入员工姓名' },
           ],
-          sex: [
-            { required: true, message: '请选择性别', trigger: 'change' }
+          eid:[
+             { required: true, message: '请输入员工编号' },
           ],
-          eid: [
-            { required: true, message: '请输入员工编号', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个数字', trigger: 'blur' }
+          apartment:[
+            { required: true, message: '请输入任职部门' },
           ],
-          idcard: [
-            { required: true, message: '请输入身份证号', trigger: 'blur' },
-            { min: 16, max: 18, message: '长度在 16 到 18 个字符', trigger: 'blur' }
-          ],
-          phone: [
-            { required: true, message: '请输入手机号', trigger: 'blur' },
-            { min: 8, max: 11, message: '长度在 8 到 11 个数字', trigger: 'blur' }
-          ],
-          apartment: [
-            { required: true, message: '请输入任职部门', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-          ],
-          job: [
-            { required: true, message: '请输入担任职务', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-          ],
-          name: [
-            { required: true, message: '请输入活动名称', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-          ],
-          date1: [
-            { type: 'date', required: true, message: '请选择出生日期', trigger: 'change' }
-          ],
-          date2: [
-            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-          ],
-          type: [
-            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
-          ],
-          resource: [
-            { required: true, message: '请选择活动资源', trigger: 'change' }
-          ],
-
+          job:[
+            { required: true, message: '请输入担任职务' },
+          ]
+         
         }
       };
     },
