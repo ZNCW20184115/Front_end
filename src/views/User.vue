@@ -1,91 +1,260 @@
 <template>
     <div id="biguser">
-            <el-row :gutter="20" id="el-row1">
-            <el-col :span="16" id="el-col1"><div class="grid-content1">
-              
-              <el-descriptions class="margin-top" title="基本资料" :column="4" direction="vertical">
-              <el-descriptions-item label="用户名">kooriookami</el-descriptions-item>
-              <el-descriptions-item label="手机号">18100000000</el-descriptions-item>
-              <el-descriptions-item label="居住地" :span="2">苏州市</el-descriptions-item>
-              <el-descriptions-item label="备注">
-                <el-tag size="small">学校</el-tag>
-              </el-descriptions-item>
-              <el-descriptions-item label="联系地址">江苏省苏州市吴中区吴中大道 1188 号</el-descriptions-item>
-              </el-descriptions>
+            <!-- <el-row :gutter="20" id="el-row1">
             
-            
-            </div></el-col>
-            <el-col :span="8" id="el-col1"><div class="grid-content1">
+              <el-col :span="16" id="el-col1">  
+              <div class="grid-content1">
+                <el-descriptions class="margin-top" title="基本资料" :column="4" direction="vertical">
+                <el-descriptions-item label="用户名">kooriookami</el-descriptions-item>
+                <el-descriptions-item label="手机号">18100000000</el-descriptions-item>
+                <el-descriptions-item label="居住地" :span="2">苏州市</el-descriptions-item>
+                <el-descriptions-item label="备注">
+                  <el-tag size="small">学校</el-tag>
+                </el-descriptions-item>
+                <el-descriptions-item label="联系地址">江苏省苏州市吴中区吴中大道 1188 号</el-descriptions-item>
+                </el-descriptions>
+              </div></el-col>
 
+            </el-row> -->
 
-              <el-descriptions class="margin-top" title="我的xx" :column="4" direction="vertical">
-              <el-descriptions-item label=""></el-descriptions-item>
-              <el-descriptions-item label=""></el-descriptions-item>
-              </el-descriptions>
+            <el-row :gutter="20" id="el-row1" style="margin-bottom:15px;padding-bottom:50px;">
 
+              <el-col :span="8" id="el-col1"  style="border:2px solid #C0C4CC;margin-right:35px;margin-left:25px;padding-right:50px;">
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                  <h2 style="text-align:center;">添加新HR</h2>
+                  <el-form-item label="HR姓名" prop="name">
+                    <el-input v-model="ruleForm.name"></el-input>
+                  </el-form-item>
 
-            </div></el-col>
-            </el-row>
+                  <el-form-item label="性别" prop="sex" style="width:300px;">
+                    <el-select v-model="ruleForm.sex" placeholder="请选择性别">
+                      <el-option label="男" value="男"></el-option>
+                      <el-option label="女" value="女"></el-option>
+                    </el-select>
+                  </el-form-item>
 
-            <el-row :gutter="20" id="el-row1">
-            <el-col :span="8" id="el-col1"><div class="grid-content1 bg-purple1">
-              
-              <el-descriptions class="margin-top" title="我的xx" :column="4" direction="vertical">
-              <el-descriptions-item label=""></el-descriptions-item>
-              <el-descriptions-item label=""></el-descriptions-item>
-              </el-descriptions>
-            
-            </div></el-col>
-            <el-col :span="8" id="el-col1"><div class="grid-content1 bg-purple1">
-              
-              <el-descriptions class="margin-top" title="我的xx" :column="4" direction="vertical">
-              <el-descriptions-item label=""></el-descriptions-item>
-              <el-descriptions-item label=""></el-descriptions-item>
-              </el-descriptions>
-              
-            
-            </div></el-col>
-            <el-col :span="8" id="el-col1"><div class="grid-content1 bg-purple1">
-              
-              <el-descriptions class="margin-top" title="我的xx" :column="4" direction="vertical">
-              <el-descriptions-item label=""></el-descriptions-item>
-              <el-descriptions-item label=""></el-descriptions-item>
-              </el-descriptions>
-            
-            
-            </div></el-col>
-            </el-row>
+                  <el-form-item label="HR编号" prop="eid">
+                    <el-input v-model="ruleForm.eid"></el-input>
+                  </el-form-item>
 
-            <el-row :gutter="20" id="el-row1">
-            <el-col :span="12" id="el-col1"><div class="grid-content1 bg-purple1">
-              
-              <el-descriptions class="margin-top" title="我的xx" :column="4" direction="vertical">
-              <el-descriptions-item label=""></el-descriptions-item>
-              <el-descriptions-item label=""></el-descriptions-item>
-              </el-descriptions>
-              
-            
-            
-            
-            </div></el-col>
-            <el-col :span="12" id="el-col1"><div class="grid-content1 bg-purple1">
-              
-              
-              <el-descriptions class="margin-top" title="我的xx" :column="4" direction="vertical">
-              <el-descriptions-item label=""></el-descriptions-item>
-              <el-descriptions-item label=""></el-descriptions-item>
-              </el-descriptions>
-              
-            
-            
-            
-            </div></el-col>
+                  <el-form-item label="身份证号" prop="idcard">
+                    <el-input v-model="ruleForm.idcard"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="手机号" prop="phone">
+                    <el-input v-model="ruleForm.phone"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="籍贯" prop="native">
+                    <el-input v-model="ruleForm.native"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="出生日期" required style="width:300px;">
+                      <el-form-item prop="date1">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+                      </el-form-item>
+                  </el-form-item>
+
+                  <el-form-item label="户口所在地" prop="region">
+                    <el-input v-model="ruleForm.region"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="任职部门" prop="apartment">
+                    <el-input v-model="ruleForm.apartment"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="担任职务" prop="job">
+                    <el-input v-model="ruleForm.job"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="入职时间" required>
+                      <el-form-item prop="date2">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date2" style="width: 100%;"></el-date-picker>
+                      </el-form-item>
+                  </el-form-item>
+
+                  <el-form-item>
+                    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                  </el-form-item>
+                </el-form>
+                
+              </el-col>
+
+              <el-col :span="8" id="el-col1" style="border:2px solid #C0C4CC;padding-right:50px;margin-right:35px;margin-left:25px;">
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                  <h2 style="text-align:center;">添加新主管</h2>
+                  <el-form-item label="主管姓名" prop="name">
+                    <el-input v-model="ruleForm.name"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="性别" prop="sex" style="width:300px;">
+                    <el-select v-model="ruleForm.sex" placeholder="请选择性别">
+                      <el-option label="男" value="男"></el-option>
+                      <el-option label="女" value="女"></el-option>
+                    </el-select>
+                  </el-form-item>
+
+                  <el-form-item label="主管编号" prop="eid">
+                    <el-input v-model="ruleForm.eid"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="身份证号" prop="idcard">
+                    <el-input v-model="ruleForm.idcard"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="手机号" prop="phone">
+                    <el-input v-model="ruleForm.phone"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="籍贯" prop="native">
+                    <el-input v-model="ruleForm.native"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="出生日期" required style="width:300px;">
+                      <el-form-item prop="date1">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
+                      </el-form-item>
+                  </el-form-item>
+
+                  <el-form-item label="户口所在地" prop="region">
+                    <el-input v-model="ruleForm.region"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="任职部门" prop="apartment">
+                    <el-input v-model="ruleForm.apartment"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="担任职务" prop="job">
+                    <el-input v-model="ruleForm.job"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="入职时间" required>
+                      <el-form-item prop="date2">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date2" style="width: 100%;"></el-date-picker>
+                      </el-form-item>
+                  </el-form-item>
+
+                  <el-form-item>
+                    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                  </el-form-item>
+                </el-form>               
+                
+              </el-col>
+
 
             </el-row>
 
 
     </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        imageUrl: '',
+        ruleForm: {
+          name: '',
+          sex: '',
+          eid: '',
+          idcard: '',
+          phone: '',
+          native: '',
+          region: '',
+          apartment: '',
+          job: '',
+          name: '',
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          type: [],
+          resource: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: '请输入员工姓名', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          sex: [
+            { required: true, message: '请选择性别', trigger: 'change' }
+          ],
+          eid: [
+            { required: true, message: '请输入员工编号', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个数字', trigger: 'blur' }
+          ],
+          idcard: [
+            { required: true, message: '请输入身份证号', trigger: 'blur' },
+            { min: 16, max: 18, message: '长度在 16 到 18 个字符', trigger: 'blur' }
+          ],
+          phone: [
+            { required: true, message: '请输入手机号', trigger: 'blur' },
+            { min: 8, max: 11, message: '长度在 8 到 11 个数字', trigger: 'blur' }
+          ],
+          native: [
+            { required: true, message: '请输入籍贯', trigger: 'blur' },
+            { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: '请输入户口所在地', trigger: 'blur' },
+            { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
+          ],
+          apartment: [
+            { required: true, message: '请输入任职部门', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          job: [
+            { required: true, message: '请输入担任职务', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          name: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: '请选择户口所在地', trigger: 'change' }
+          ],
+          date1: [
+            { type: 'date', required: true, message: '请选择出生日期', trigger: 'change' }
+          ],
+          date2: [
+            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+          ],
+          type: [
+            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+          ],
+          resource: [
+            { required: true, message: '请选择活动资源', trigger: 'change' }
+          ],
+
+        }
+      };
+    },
+    methods: {
+      handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+      },
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
+    }
+  }
+</script>
+
+
+
 <style>
   #biguser{
     margin-right: 60px;
