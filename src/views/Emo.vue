@@ -21,7 +21,7 @@
             <!--<el-button @click="clearFilter">清除所有过滤器</el-button>-->
 
             <el-button type="primary" style=" margin-left: 3px;">搜索</el-button>
-            <router-link  to="/Addemployee"><el-button type="primary" style=" margin-left: 580px;">录入员工信息</el-button></router-link>
+            <router-link  to="/Addemployee"><el-button type="primary" style=" margin-left: 480px;">录入员工信息</el-button></router-link>
             
 
             <!-- 查看其他公司员工drawer -->

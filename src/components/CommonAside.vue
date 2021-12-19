@@ -77,7 +77,7 @@
           {
             path: "/user",
             name: "user",
-            label: "用户管理",
+            label: "HR/主管管理",
             icon: "user",
           },
           {
@@ -88,13 +88,13 @@
             {
              path: "/RelationTransform",
              name: "RelationTransform",
-             label: "关系转换",
+             label: "员工关系转换",
              icon: "setting",
             },
             {
              path: "/AdministratorChange",
              name: "AdministratorChange",
-             label: "管理员变更",
+             label: "主管权限变更",
              icon: "setting" ,
            }]
           },
