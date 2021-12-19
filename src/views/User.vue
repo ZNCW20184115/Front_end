@@ -120,7 +120,7 @@
                     @click.native.prevent="deleteRow(scope.$index, ZGtableData)"
                     type="text"
                     size="small">
-                    移除
+                    删除
                   </el-button>
                 </template>
               </el-table-column>
