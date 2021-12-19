@@ -5,8 +5,8 @@
 <div id="shouye">
      <div class="l-content" >
       <el-button plain icon="el-icon-menu" size="mini" @click="handleMenu"></el-button>
-      <el-breadcrumb >
-        <el-breadcrumb-item :to="{ path: '/Home' }" id="breadcrumb">首页</el-breadcrumb-item>
+      <el-breadcrumb style="margin-left:10px">
+        <el-breadcrumb-item :to="{ path: '/Home' }" id="breadcrumb"> 首页</el-breadcrumb-item>
         <el-breadcrumb-item :to="current.path" v-if="current">
           {{current.label}}
         </el-breadcrumb-item>

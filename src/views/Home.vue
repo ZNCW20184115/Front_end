@@ -21,7 +21,7 @@
     <div class="block">
     <span class="demonstration" style="text-align:center;display:block"><h5>最新资讯</h5></span>
     <el-carousel trigger="click" height="150px">
-      <el-carousel-item v-for="item in 4" :key="item">
+      <el-carousel-item style="text-align:center" v-for="item in 4" :key="item">
         <h3 class="small">{{ item }}</h3>
       </el-carousel-item>
     </el-carousel>

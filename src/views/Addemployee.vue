@@ -271,10 +271,6 @@
             { required: true, message: '请输入担任职务', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
-          name: [
-            { required: true, message: '请输入活动名称', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-          ],
           region: [
             { required: true, message: '请选择户口所在地', trigger: 'change' }
           ],

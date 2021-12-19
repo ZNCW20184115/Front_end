@@ -9,7 +9,98 @@
 
             <el-descriptions class="margin-top" title="员工信息" :column="2" :size="size" border>
             <template slot="extra">
-            <router-link  to="/Addemployee"><el-button type="primary" size="small" icon="el-icon-edit"></el-button></router-link>
+            <div>
+              <!-- Form -->
+            <el-button type="primary" @click="dialogFormVisible = true">编辑</el-button>
+
+            <el-dialog style="width:1550px" :visible.sync="dialogFormVisible">
+                <h2 style="text-align: center;">员工信息</h2>
+
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">
+                
+                <el-form-item label="员工姓名" prop="name" >
+                    <el-input v-model="ruleForm.name" placeholder="汤姆"></el-input>
+                </el-form-item>
+
+                <el-form-item label="性别" prop="sex" >
+                    <el-select v-model="ruleForm.sex" placeholder="男">
+                    <el-option label="男" value="男"></el-option>
+                    <el-option label="女" value="女"></el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="员工编号" prop="eid">
+                    <el-input v-model="ruleForm.eid" placeholder="001"></el-input>
+                </el-form-item>
+
+                <el-form-item label="身份证号" prop="idcard">
+                    <el-input v-model="ruleForm.idcard" placeholder="310112200306057845"></el-input>
+                </el-form-item>
+
+                <el-form-item label="手机号" prop="phone">
+                    <el-input v-model="ruleForm.phone" placeholder="18100000000"></el-input>
+                </el-form-item>
+
+                <el-form-item label="籍贯" prop="native">
+                    <el-input v-model="ruleForm.native" placeholder="苏州市"></el-input>
+                </el-form-item>
+
+                <el-form-item label="出生日期" required >
+                    <el-form-item prop="date1">
+                        <el-date-picker type="date" placeholder="2002.3.6" v-model="ruleForm.date1"></el-date-picker>
+                    </el-form-item>
+                </el-form-item>
+
+                <el-form-item label="户口所在地" prop="region">
+                    <el-input v-model="ruleForm.region" placeholder="浙江"></el-input>
+                </el-form-item>
+
+                <el-form-item label="最高学历" prop="eb">
+                    <el-input v-model="ruleForm.eb" placeholder="研究生"></el-input>
+                </el-form-item>
+
+                <el-form-item label="毕业院校" prop="school">
+                    <el-input v-model="ruleForm.school" placeholder="交通大学"></el-input>
+                </el-form-item>
+
+                <el-form-item label="专业" prop="major">
+                    <el-input v-model="ruleForm.major" placeholder="软件工程"></el-input>
+                </el-form-item>
+
+                <el-form-item label="任职部门" prop="apartment">
+                    <el-input v-model="ruleForm.apartment" placeholder="开发部"></el-input>
+                </el-form-item>
+
+                <el-form-item label="担任职务" prop="job">
+                    <el-input v-model="ruleForm.job" placeholder="架构师"></el-input>
+                </el-form-item>
+
+                <el-form-item label="入职时间" required>
+                    <el-form-item prop="date2">
+                        <el-date-picker type="date" placeholder="2020.1.3" v-model="ruleForm.date2"></el-date-picker>
+                    </el-form-item>
+                </el-form-item>
+
+                <el-form-item label="是否已婚" prop="marry">
+                    <el-switch v-model="ruleForm.marry" placeholder="是"></el-switch>
+                </el-form-item>
+
+
+
+                <el-form-item label="备注" prop="desc" style="width:580px;">
+                    <el-input type="textarea" v-model="ruleForm.desc" placeholder="无"></el-input>
+                </el-form-item>
+
+                
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+            </div>
+            </el-dialog>
+            </div>
+           
+
             </template>
 
 
@@ -145,10 +236,9 @@
             </el-descriptions-item>
 
             </el-descriptions>
-
-
-
           </el-tab-pane>
+
+          
 
 
           <el-tab-pane label="员工管理" name="second">
@@ -212,6 +302,103 @@ import request from "../utils/request";
 export default {
     data() {
       return {
+          ruleForm: {
+          name: '',
+          sex: '',
+          eid: '',
+          idcard: '',
+          phone: '',
+          native: '',
+          region: '',
+          eb: '',
+          school: '',
+          major: '',
+          apartment: '',
+          job: '',
+          name: '',
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          marry: true,
+          type: [],
+          resource: '',
+          desc: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: '请输入员工姓名', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          sex: [
+            { required: true, message: '请选择性别', trigger: 'change' }
+          ],
+          eid: [
+            { required: true, message: '请输入员工编号', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个数字', trigger: 'blur' }
+          ],
+          idcard: [
+            { required: true, message: '请输入身份证号', trigger: 'blur' },
+            { min: 16, max: 18, message: '长度在 16 到 18 个字符', trigger: 'blur' }
+          ],
+          phone: [
+            { required: true, message: '请输入手机号', trigger: 'blur' },
+            { min: 8, max: 11, message: '长度在 8 到 11 个数字', trigger: 'blur' }
+          ],
+          native: [
+            { required: true, message: '请输入籍贯', trigger: 'blur' },
+            { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: '请输入户口所在地', trigger: 'blur' },
+            { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
+          ],
+          eb: [
+            { required: true, message: '请输入最高学历', trigger: 'blur' },
+            { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
+          ],
+          school: [
+            { required: true, message: '请输入毕业院校', trigger: 'blur' },
+            { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
+          ],
+          major: [
+            { required: true, message: '请输入专业', trigger: 'blur' },
+            { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
+          ],
+          apartment: [
+            { required: true, message: '请输入任职部门', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          job: [
+            { required: true, message: '请输入担任职务', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: '请选择户口所在地', trigger: 'change' }
+          ],
+          date1: [
+            { type: 'date', required: true, message: '请选择出生日期', trigger: 'change' }
+          ],
+          date2: [
+            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+          ],
+          type: [
+            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+          ],
+          resource: [
+            { required: true, message: '请选择活动资源', trigger: 'change' }
+          ],
+          desc: [
+            { required: true, message: '请填写备注', trigger: 'blur' }
+          ]
+        },
+
+        dialogFormVisible: false,
+        formLabelWidth: '120px',
+
+
+
+
         activeName: 'first',
         dialogImageUrl: '',
         dialogVisible: false,
@@ -270,6 +457,19 @@ export default {
       };
     },
     methods: {
+        submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      },
       load(){
         this.loading = true
         request.get("/employee/{id}",{
@@ -463,9 +663,15 @@ export default {
   }
 </script>
 <style scoped>
+.el-form{
+    margin-top: 38px;
 
-#firstlabel{
-text-align: center;
+}
+.el-form-item{
+    display: inline-block;
+}
+.dialog-footer{
+    text-align: center;
 }
 #myChart{
     display: flex;

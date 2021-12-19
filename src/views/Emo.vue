@@ -63,9 +63,9 @@
             <el-table-column prop="cz" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
                 
-                <div id="anniu">
+                <div id="anniu"style="margin-right:35px">
                   <router-link  to="/Lookuser">
-                <el-button  size="mini" type="primary" icon="el-icon-zoom-in"></el-button>
+                <el-button  size="mini" type="primary" >查看</el-button>
                 </router-link>
                 </div>
                 
