@@ -17,10 +17,33 @@
 
             </el-row> -->
 
-            <el-row :gutter="20" id="el-row1" style="margin-bottom:15px;padding-bottom:50px;">
+          
+      <el-tabs v-model="activeName" @tab-click="handleClick">
+        <!--hr-->
+        <el-tab-pane label="HR" name="first">
+          <el-col :span="14" class="el-col2" >
+                <h2>HR名单</h2>
+                <el-table ref="filterTable" :data="HRtableData" style="width: 100%">
+                  <el-table-column prop="HRname" label="HR名称" width="180"></el-table-column>
+                  <el-table-column prop="eid" label="员工编号" width="180"></el-table-column>
+                  <el-table-column prop="HRxianRenzhiWu" label="现任职务" width="180"></el-table-column>
+                  <el-table-column
+                    label="操作"
+                    width="50">
+                    <template slot-scope="scope">
+                      <el-button
+                        @click.native.prevent="deleteRow(scope.$index, HRtableData)"
+                        type="text"
+                        size="small">
+                        删除
+                      </el-button>
+                    </template>
+                  </el-table-column>
+            </el-table>
+          </el-col>
 
-              <el-col :span="8" id="el-col1"  style="border:2px solid #C0C4CC;margin-right:35px;margin-left:25px;padding-right:50px;">
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+          <el-col :span="6.5" class="el-col1" >
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
                   <h2 style="text-align:center;">添加新HR</h2>
                   <el-form-item label="HR姓名" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
@@ -33,7 +56,7 @@
                     </el-select>
                   </el-form-item>
 
-                  <el-form-item label="HR编号" prop="eid">
+                  <el-form-item label="员工编号" prop="eid">
                     <el-input v-model="ruleForm.eid"></el-input>
                   </el-form-item>
 
@@ -78,11 +101,33 @@
                     <el-button @click="resetForm('ruleForm')">重置</el-button>
                   </el-form-item>
                 </el-form>
-                
-              </el-col>
-
-              <el-col :span="8" id="el-col1" style="border:2px solid #C0C4CC;padding-right:50px;margin-right:35px;margin-left:25px;">
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            </el-col>
+             
+        </el-tab-pane>
+        <!--主管-->
+        <el-tab-pane label="主管" name="second">
+          <el-col class="el-col2" :span="14">
+            <h2>主管名单</h2>
+            <el-table ref="filterTable" :data="ZGtableData" style="width: 100%">
+              <el-table-column sortable prop="ZGdepartment" label="部门名称" width="180"></el-table-column>
+              <el-table-column prop="ZGname" label="主管名称" width="180"></el-table-column>
+              <el-table-column prop="ZGxianRenzhiWu" label="现任职务" width="180"></el-table-column>
+              <el-table-column
+                label="操作"
+                width="50">
+                <template slot-scope="scope">
+                  <el-button
+                    @click.native.prevent="deleteRow(scope.$index, ZGtableData)"
+                    type="text"
+                    size="small">
+                    移除
+                  </el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-col>
+          <el-col  class="el-col1" :span="6.5">
+             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
                   <h2 style="text-align:center;">添加新主管</h2>
                   <el-form-item label="主管姓名" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
@@ -139,12 +184,11 @@
                     <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
                     <el-button @click="resetForm('ruleForm')">重置</el-button>
                   </el-form-item>
-                </el-form>               
-                
-              </el-col>
-
-
-            </el-row>
+                </el-form>     
+          </el-col>   
+          
+        </el-tab-pane>
+      </el-tabs>
 
 
     </div>
@@ -154,6 +198,76 @@
   export default {
     data() {
       return {
+        activeName: 'first',
+        HRtableData:[{
+          HRname:'爱德华',
+          HRxianRenzhiWu:'部长',
+          eid:'2020202',
+        },{
+          HRname:'爱丽丝',
+          HRxianRenzhiWu:'部员',
+          eid:'20211102',
+        },{
+          HRname:'贝拉',
+          HRxianRenzhiWu:'部长',
+          eid:'3838738',
+        },{
+          HRname:'雅克布',
+          HRxianRenzhiWu:'部长',
+          eid:'202027345',
+        },{
+          HRname:'爱德华',
+          HRxianRenzhiWu:'部长',
+          eid:'2020202',
+        },{
+          HRname:'爱丽丝',
+          HRxianRenzhiWu:'部员',
+          eid:'20211102',
+        },{
+          HRname:'贝拉',
+          HRxianRenzhiWu:'部长',
+          eid:'3838738',
+        },{
+          HRname:'雅克布',
+          HRxianRenzhiWu:'部长',
+          eid:'202027345',
+        }],
+        ZGtableData:[{
+          ZGdepartment:'财务部',
+          ZGname:'Jacob',
+          ZGxianRenzhiWu:'部长',
+        },{
+          ZGdepartment:'技术部',
+          ZGname:'Edward',
+          ZGxianRenzhiWu:'部长',
+        },{
+          ZGdepartment:'营销部',
+          ZGname:'Jacob',
+          ZGxianRenzhiWu:'部长',
+        },{
+          ZGdepartment:'销售部',
+          ZGname:'Jacob',
+          ZGxianRenzhiWu:'部长',
+        },{
+          ZGdepartment:'财务部',
+          ZGname:'Jacob',
+          ZGxianRenzhiWu:'部长',
+        },{
+          ZGdepartment:'技术部',
+          ZGname:'Edward',
+          ZGxianRenzhiWu:'部长',
+        },{
+          ZGdepartment:'营销部',
+          ZGname:'Jacob',
+          ZGxianRenzhiWu:'部长',
+        },{
+          ZGdepartment:'销售部',
+          ZGname:'Jacob',
+          ZGxianRenzhiWu:'部长',
+        }
+        ],
+
+
         imageUrl: '',
         ruleForm: {
           name: '',
@@ -248,7 +362,12 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
+      },
+      deleteRow(index, rows) {
+        rows.splice(index, 1);
       }
+
+
     }
   }
 </script>
@@ -261,16 +380,22 @@
     width: 100%;
     height: 500px;
   }
-  #el-row1 {
-    margin-bottom: 50px;
-    margin-top: 20px;
-
-
+  h2{
+    text-align: center;
   }
-  #el-col1 {
-    border-radius: 4px;
-    min-height: 190px;
-
+  
+  .el-col1{
+    padding-top: 10px;
+    padding-left:10px;
+    padding-right: 50px;
+    border:2px solid #C0C4CC;
+    background-color:#DCDFE6;
+    padding-bottom:20px;
+    margin-bottom:40px;
+  }
+  .el-col2{
+    padding-right:40px;
+    padding-left:20px;
   }
   .grid-content1 {
     border-radius: 4px;
@@ -283,5 +408,6 @@
     background-color: #f9fafc;
 
   }
+
 
 </style>
