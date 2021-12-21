@@ -81,22 +81,10 @@
             icon: "user",
           },
           {
-            path: "/operation",
-            label: "业务管理",
-            icon: "operation",
-            children: [
-            {
-             path: "/RelationTransform",
-             name: "RelationTransform",
-             label: "员工关系转换",
-             icon: "setting",
-            },
-            {
-             path: "/AdministratorChange",
-             name: "AdministratorChange",
-             label: "主管权限变更",
-             icon: "setting" ,
-           }]
+            path:"/RelationTransform",
+            name: "RelationTransform",
+            label: "员工关系转换",
+            icon:"setting",
           },
         ],
       }

@@ -1,32 +1,52 @@
 <template>
     <div id="biguser">
-            <!-- <el-row :gutter="20" id="el-row1">
-            
-              <el-col :span="16" id="el-col1">  
-              <div class="grid-content1">
-                <el-descriptions class="margin-top" title="基本资料" :column="4" direction="vertical">
-                <el-descriptions-item label="用户名">kooriookami</el-descriptions-item>
-                <el-descriptions-item label="手机号">18100000000</el-descriptions-item>
-                <el-descriptions-item label="居住地" :span="2">苏州市</el-descriptions-item>
-                <el-descriptions-item label="备注">
-                  <el-tag size="small">学校</el-tag>
-                </el-descriptions-item>
-                <el-descriptions-item label="联系地址">江苏省苏州市吴中区吴中大道 1188 号</el-descriptions-item>
-                </el-descriptions>
-              </div></el-col>
-
-            </el-row> -->
-
           
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <!--hr-->
         <el-tab-pane label="HR" name="first">
-          <el-col :span="14" class="el-col2" >
-                <h2>HR名单</h2>
-                <el-table ref="filterTable" :data="HRtableData" style="width: 100%">
+
+                <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
+                <h2 class="mingdan">HR名单</h2>
+                <el-dialog style="width:1000px" :visible.sync="dialogFormVisible">
+                    <h2 style="text-align: center;">添加新HR</h2>
+
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">                    
+
+                  <el-form-item label="HR姓名" prop="name">
+                    <el-input v-model="ruleForm.name"></el-input>
+                  </el-form-item>
+                  
+                  <el-form-item label="员工编号" prop="eid">
+                    <el-input v-model="ruleForm.eid"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="担任职务" prop="job">
+                    <el-input v-model="ruleForm.job"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="账号" prop="HR_id">
+                    <el-input v-model="ruleForm.job"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="密码" prop="HR_password">
+                    <el-input v-model="ruleForm.job"></el-input>
+                  </el-form-item>
+
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                  <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                  <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </div>
+                </el-dialog>
+
+
+
+                <el-table ref="filterTable" :data="HRtableData" style="width: 950px">
                   <el-table-column prop="HRname" label="HR名称" width="180"></el-table-column>
                   <el-table-column prop="eid" label="员工编号" width="180"></el-table-column>
                   <el-table-column prop="HRxianRenzhiWu" label="现任职务" width="180"></el-table-column>
+                  <el-table-column label="账号" prop="HR_id"  width="180"></el-table-column>
+                  <el-table-column label="密码" prop="HR_password"  width="180"></el-table-column>
                   <el-table-column
                     label="操作"
                     width="50">
@@ -40,59 +60,20 @@
                     </template>
                   </el-table-column>
             </el-table>
-          </el-col>
-
-          <el-col :span="6.5" class="el-col1" >
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                  <h3 style="text-align:center;">添加新HR</h3>
-                  <el-form-item label="HR姓名" prop="name">
-                    <el-input v-model="ruleForm.name"></el-input>
-                  </el-form-item>
-
-
-                  <el-form-item label="员工编号" prop="eid">
-                    <el-input v-model="ruleForm.eid"></el-input>
-                  </el-form-item>
-
-                  <el-form-item label="担任职务" prop="job">
-                    <el-input v-model="ruleForm.job"></el-input>
-                  </el-form-item>
-
-                  <el-form-item>
-                    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-                    <el-button @click="resetForm('ruleForm')">重置</el-button>
-                  </el-form-item>
-                </el-form>
-            </el-col>
+  
              
         </el-tab-pane>
         <!--主管-->
         <el-tab-pane label="主管" name="second">
-          <el-col class="el-col2" :span="14">
-            <h2>主管名单</h2>
-            <el-table ref="filterTable" :data="ZGtableData" style="width: 100%">
-              <el-table-column sortable prop="ZGdepartment" label="部门名称" width="135"></el-table-column>
-              <el-table-column prop="ZGname" label="主管名称" width="135"></el-table-column>
-              <el-table-column prop="eid" label="员工编号" width="135"></el-table-column>
-              <el-table-column prop="ZGxianRenzhiWu" label="现任职务" width="135"></el-table-column>
-              <el-table-column
-                label="操作"
-                width="50">
-                <template slot-scope="scope">
-                  <el-button
-                    @click.native.prevent="deleteRow(scope.$index, ZGtableData)"
-                    type="text"
-                    size="small">
-                    删除
-                  </el-button>
-                </template>
-              </el-table-column>
-            </el-table>
-          </el-col>
-          <el-col  class="el-col1" :span="6.5">
-             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                  <h3 style="text-align:center;">添加新主管</h3>
-                  <el-form-item label="主管姓名" prop="name">
+   
+            <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
+            <h2 class="mingdan_ZG">主管名单</h2>
+                <el-dialog style="width:1000px" :visible.sync="dialogFormVisible">
+                    <h2 style="text-align: center;">添加新主管</h2>
+
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">                    
+
+                   <el-form-item label="主管姓名" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
                   </el-form-item>
 
@@ -108,12 +89,49 @@
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
-                  <el-form-item>
-                    <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-                    <el-button @click="resetForm('ruleForm')">重置</el-button>
+                   <el-form-item label="账号" prop="ZG_id">
+                    <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
-                </el-form>     
-          </el-col>   
+
+                  <el-form-item label="密码" prop="ZG_password">
+                    <el-input v-model="ruleForm.job"></el-input>
+                  </el-form-item>
+
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                  <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                  <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </div>
+                </el-dialog>
+
+            <el-table ref="filterTable" :data="ZGtableData" style="width: 1250px">
+              <el-table-column sortable prop="ZGdepartment" label="部门名称" width="135"></el-table-column>
+              <el-table-column prop="ZGname" label="主管名称" width="135"></el-table-column>
+              <el-table-column prop="eid" label="员工编号" width="135"></el-table-column>
+              <el-table-column prop="ZGxianRenzhiWu" label="现任职务" width="135"></el-table-column>
+              <el-table-column label="账号" prop="ZG_id" width="180"></el-table-column>
+              <el-table-column label="密码" prop="ZG_password" width="180"></el-table-column>
+              <el-table-column prop="tag" label="状态" width="100"
+              :filters="[{ text: '管理中', value: '管理中' }, 
+              { text: '仅查看', value: '仅查看' }]"
+              :filter-method="filterTag" filter-placement="bottom-end">
+                <template slot-scope="scope"> 
+                  <el-tag :type="scope.row.tag === '管理中' ? 'primary' : 'success'" disable-transitions>
+                    {{scope.row.tag}}
+                  </el-tag>
+                </template>
+              </el-table-column>
+              <el-table-column
+                label="操作"
+                width="250">
+                <template slot-scope="scope">
+                  <el-button size="mini" @click="toAdministrate(scope.$index, scope.row)" type="primary">使管理</el-button>
+                  <el-button size="mini" @click="toRead(scope.$index, scope.row)" type="success">使查看</el-button>
+                  <el-button @click.native.prevent="deleteRow(scope.$index, ZGtableData)" type="danger" size="mini">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+
           
         </el-tab-pane>
       </el-tabs>
@@ -131,79 +149,120 @@
           HRname:'爱德华',
           HRxianRenzhiWu:'部长',
           eid:'2020202',
+          HR_id:'123414',
+          HR_password:'1828288383'
         },{
           HRname:'爱丽丝',
           HRxianRenzhiWu:'部员',
           eid:'20211102',
+          HR_id:'123414',
+          HR_password:'1828288383'
         },{
           HRname:'贝拉',
           HRxianRenzhiWu:'部长',
           eid:'3838738',
+          HR_id:'123414',
+          HR_password:'1828288383'
         },{
           HRname:'雅克布',
           HRxianRenzhiWu:'部长',
           eid:'202027345',
+          HR_id:'123414',
+          HR_password:'1828288383'
         },{
           HRname:'爱德华',
           HRxianRenzhiWu:'部长',
           eid:'2020202',
+          HR_id:'123414',
+          HR_password:'1828288383'
         },{
           HRname:'爱丽丝',
           HRxianRenzhiWu:'部员',
           eid:'20211102',
+          HR_id:'123414',
+          HR_password:'1828288383'
         },{
           HRname:'贝拉',
           HRxianRenzhiWu:'部长',
           eid:'3838738',
+          HR_id:'123414',
+          HR_password:'1828288383'
         },{
           HRname:'雅克布',
           HRxianRenzhiWu:'部长',
           eid:'202027345',
+          HR_id:'123414',
+          HR_password:'1828288383'
         }],
         ZGtableData:[{
           ZGdepartment:'财务部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
+          tag:'管理中',
+          ZG_id:'123414',
+          ZG_password:'1828288383'
         },{
           ZGdepartment:'技术部',
           ZGname:'Edward',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
+          tag:'管理中',
+          ZG_id:'123414',
+          ZG_password:'1828288383'
         },{
           ZGdepartment:'营销部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
+          tag:'管理中',
+          ZG_id:'123414',
+          ZG_password:'1828288383'
         },{
           ZGdepartment:'销售部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
+          tag:'管理中',
+          ZG_id:'123414',
+          ZG_password:'1828288383'
         },{
           ZGdepartment:'财务部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
+          tag:'管理中',
+          ZG_id:'123414',
+          ZG_password:'1828288383'
         },{
           ZGdepartment:'技术部',
           ZGname:'Edward',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
+          tag:'管理中',
+          ZG_id:'123414',
+          ZG_password:'1828288383'
         },{
           ZGdepartment:'营销部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
+          tag:'管理中',
+          ZG_id:'123414',
+          ZG_password:'1828288383'
         },{
           ZGdepartment:'销售部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
+          tag:'管理中',
+          ZG_id:'123414',
+          ZG_password:'1828288383'
         }
         ],
 
-
+      dialogFormVisible: false,
+      formLabelWidth: '120px',
         imageUrl: '',
         ruleForm: {
           name: '',
@@ -248,6 +307,12 @@
       },
       deleteRow(index, rows) {
         rows.splice(index, 1);
+      },
+      toAdministrate(tab,event) {
+        event.tag="管理中";
+      },
+      toRead(tab,event) {
+        event.tag="仅查看";
       }
 
 
@@ -263,8 +328,11 @@
     width: 100%;
     height: 500px;
   }
-  h2{
-    text-align: center;
+  .mingdan{
+    margin-left: 400px;
+  }
+  .mingdan_ZG{
+    margin-left: 550px;
   }
   .el-col1 h3{
     margin-bottom:40px;
@@ -296,5 +364,19 @@
 
   }
 
+  .addNew{
+    margin-bottom: 20px;
+  }
+
+
+  .el-form{
+      margin-top: 38px;
+  }
+  .el-form-item{
+      display: inline-block;
+  }
+  .dialog-footer{
+      text-align: center;
+  }
 
 </style>
