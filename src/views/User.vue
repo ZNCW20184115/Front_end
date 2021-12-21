@@ -6,7 +6,6 @@
         <el-tab-pane label="HR" name="first">
 
                 <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
-                <h2 class="mingdan">HR名单</h2>
                 <el-dialog style="width:1000px" :visible.sync="dialogFormVisible">
                     <h2 style="text-align: center;">添加新HR</h2>
 
@@ -67,7 +66,6 @@
         <el-tab-pane label="主管" name="second">
    
             <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
-            <h2 class="mingdan_ZG">主管名单</h2>
                 <el-dialog style="width:1000px" :visible.sync="dialogFormVisible">
                     <h2 style="text-align: center;">添加新主管</h2>
 
