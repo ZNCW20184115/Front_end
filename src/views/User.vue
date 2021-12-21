@@ -40,7 +40,7 @@
 
 
 
-                <el-table ref="filterTable" :data="HRtableData" style="width: 950px">
+                <el-table ref="filterTable" :data="HRtableData" style="width: 980px">
                   <el-table-column prop="HRname" label="HR名称" width="180"></el-table-column>
                   <el-table-column prop="eid" label="员工编号" width="180"></el-table-column>
                   <el-table-column prop="HRxianRenzhiWu" label="现任职务" width="180"></el-table-column>
@@ -48,11 +48,11 @@
                   <el-table-column label="密码" prop="HR_password"  width="180"></el-table-column>
                   <el-table-column
                     label="操作"
-                    width="50">
+                    width="80">
                     <template slot-scope="scope">
                       <el-button
-                        @click.native.prevent="deleteRow(scope.$index, HRtableData)"
-                        type="text"
+                        @click="deleteopen(scope.$index, HRtableData)"
+                        type="danger"
                         size="small">
                         删除
                       </el-button>
@@ -125,7 +125,8 @@
                 <template slot-scope="scope">
                   <el-button size="mini" @click="toAdministrate(scope.$index, scope.row)" type="primary">使管理</el-button>
                   <el-button size="mini" @click="toRead(scope.$index, scope.row)" type="success">使查看</el-button>
-                  <el-button @click.native.prevent="deleteRow(scope.$index, ZGtableData)" type="danger" size="mini">删除</el-button>
+                  <el-button type="danger" @click="deleteopen(scope.$index, ZGtableData)" size="mini">删除</el-button>
+                   <!-- @click.native.prevent="deleteRow(scope.$index, ZGtableData)" -->
                 </template>
               </el-table-column>
             </el-table>
@@ -305,6 +306,24 @@
       },
       deleteRow(index, rows) {
         rows.splice(index, 1);
+      },
+      deleteopen(index, rows) {
+        this.$confirm('此操作将永久删除该员工信息, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!',
+          });
+          rows.splice(index, 1);
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
       },
       toAdministrate(tab,event) {
         event.tag="管理中";
