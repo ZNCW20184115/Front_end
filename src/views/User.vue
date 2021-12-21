@@ -3,7 +3,7 @@
           
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <!--hr-->
-        <el-tab-pane label="HR" name="first">
+        <el-tab-pane label="HR管理" name="first">
 
                 <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
                 <el-dialog style="width:1000px" :visible.sync="dialogFormVisible">
@@ -63,7 +63,7 @@
              
         </el-tab-pane>
         <!--主管-->
-        <el-tab-pane label="主管" name="second">
+        <el-tab-pane label="员工主管管理" name="second">
    
             <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
                 <el-dialog style="width:1000px" :visible.sync="dialogFormVisible">

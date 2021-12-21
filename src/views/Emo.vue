@@ -251,8 +251,6 @@
     },
     mounted() {
       this.employees = this.loadAll();
-    },
-    mounted() {
       this.list = this.states.map(item => {
         return { value: `value:${item}`, label: `${item}` };
       });
