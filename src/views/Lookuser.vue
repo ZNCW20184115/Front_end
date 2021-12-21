@@ -4,17 +4,53 @@
 
 
           <el-tabs v-model="activeName" @tab-click="handleClick" stretch="true" >
-          <el-tab-pane label="基本信息" name="first" id="firstlabel">
+          <el-tab-pane style="text-align: center;" label="基本信息" name="first" id="firstlabel">
 
+            <div class="demo-image__preview">
+              <el-image 
+                style="width: 100px; height: 100px"
+                :src="url" 
+                :preview-src-list="srcList">
+              </el-image>
+            </div>
+            
+            
 
-            <el-descriptions class="margin-top" title="员工信息" :column="2" :size="size" border>
+            <el-descriptions style="text-align: center;" class="margin-top" title="" :column="2" :size="size" border>
+            
+                      
             <template slot="extra">
+              <el-button type="primary" @click="dialogFormVisible = true">编辑</el-button>
             <div>
               <!-- Form -->
-            <el-button type="primary" @click="dialogFormVisible = true">编辑</el-button>
-
             <el-dialog style="width:1550px" :visible.sync="dialogFormVisible">
                 <h2 style="text-align: center;">员工信息</h2>
+
+
+                <div class="demo-image__preview" style="display:inline-block">
+
+                  <div class="idf">
+               <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+               头像
+               </div>
+
+
+                <el-upload
+
+                  class="avatar-uploader"
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  :show-file-list="false"
+                  :on-success="handleAvatarSuccess"
+                  :before-upload="beforeAvatarUpload">
+                  <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+                </div>
+
+                
+
+
+
 
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">
                 
@@ -302,6 +338,9 @@ import request from "../utils/request";
 export default {
     data() {
       return {
+        imageUrl: '',
+        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+
           ruleForm: {
           name: '',
           sex: '',
@@ -457,6 +496,26 @@ export default {
       };
     },
     methods: {
+      handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
+
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
+      },
+
+
+
+
+
         submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -663,8 +722,31 @@ export default {
   }
 </script>
 <style scoped>
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 38px;
+    color: #8c939d;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+    display: block;
+  }
 .el-form{
-    margin-top: 38px;
+    margin-top: 8px;
 
 }
 .el-form-item{
