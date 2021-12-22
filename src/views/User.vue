@@ -6,10 +6,10 @@
         <el-tab-pane label="HR管理" name="first">
 
                 <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
-                <el-dialog style="width:1000px" :visible.sync="dialogFormVisible">
+                <el-dialog  style="width:1000px"  :visible.sync="dialogFormVisible"  >
                     <h2 style="text-align: center;">添加新HR</h2>
 
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">                    
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="add_Form_1">                    
 
                   <el-form-item label="HR姓名" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
@@ -69,7 +69,7 @@
                 <el-dialog style="width:1000px" :visible.sync="dialogFormVisible">
                     <h2 style="text-align: center;">添加新主管</h2>
 
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">                    
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="add_Form_2">                    
 
                    <el-form-item label="主管姓名" prop="name">
                     <el-input v-model="ruleForm.name"></el-input>
@@ -365,10 +365,7 @@
     margin-top: 70px;
     margin-bottom:40px;
   }
-  .el-col2{
-    padding-right:40px;
-    padding-left:20px;
-  }
+
   .grid-content1 {
     border-radius: 4px;
     height: 180px;
@@ -384,7 +381,13 @@
   .addNew{
     margin-bottom: 20px;
   }
-
+  
+  .add_Form_1{
+    height:22em;
+  }
+  .add_Form_2{
+    height:25em;
+  }
 
   .el-form{
       margin-top: 38px;
@@ -392,8 +395,23 @@
   .el-form-item{
       display: inline-block;
   }
+ 
+  .el-dialog{
+    /* position:absolute; */
+    top:100px;
+    overflow:hidden;
+    left:250px;
+    margin:0 !important;
+    display:flex;
+    flex-direction:column;
+    
+  } 
+
   .dialog-footer{
       text-align: center;
   }
 
+  div::-webkit-scrollbar {
+    width: 0;
+  }
 </style>

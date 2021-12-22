@@ -36,7 +36,7 @@
   <div class="grid-content bg-purple-dark" id='in'>
     
 <div id=fastdiv><router-link  to="/Emo"><el-button id="fast" icon="el-icon-search" circle ></el-button></router-link>员工管理</div>
-  <div id=fastdiv><el-button id="fast" type="danger" icon="el-icon-edit" circle ></el-button>HR/主管管理</div>
+  <div id=fastdiv><router-link  to="/User"><el-button id="fast" type="danger" icon="el-icon-edit" circle ></el-button></router-link>HR/主管管理</div>
   <div id=fastdiv><router-link  to="/Addemployee"><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button></router-link>录入员工信息</div>
   <div id=fastdiv><router-link  to="/Examine_Emp"><el-button id="fast" type="warning" icon="el-icon-star-off" circle ></el-button></router-link>员工考核</div>
   
