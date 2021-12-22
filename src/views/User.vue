@@ -5,7 +5,7 @@
         <!--hr-->
         <el-tab-pane label="HR管理" name="first">
 
-                <el-button type="primary" class="addNew" @click="dialogFormVisible = truesss">添加</el-button>
+                <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
                 <el-dialog  style="width:1000px"  :visible.sync="dialogFormVisible"  >
                     <h2 style="text-align: center;">添加新HR</h2>
 
