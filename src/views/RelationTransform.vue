@@ -1,8 +1,9 @@
 <template>
 <div>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
+  <!-- <el-tabs v-model="activeName" @tab-click="handleClick"> -->
     <!--转入审批-->
-    <el-tab-pane label="转入审批" name="first">
+    <!-- <el-tab-pane label="转入审批" name="first"> -->
+      <h2>转入申请</h2>
         <el-table :data="in_tableData" style="width: 100%">
             <!-- 申请日期 -->
             <el-table-column prop="IN_date" label="申请日期" sortable width="180"></el-table-column>
@@ -29,17 +30,13 @@
                 </template>
             </el-table-column>
         </el-table>
-    </el-tab-pane>
-    <!--转出审批-->
-    <el-tab-pane label="转出审批" name="second">
+    <!-- </el-tab-pane> -->
+    <!-- 转出审批 -->
+     <!-- <el-tab-pane label="转出审批" name="second">
         <el-table :data="out_tableData" style="width: 100%">
-          <!-- 申请日期 -->
           <el-table-column prop="OUT_date" label="申请日期" sortable width="180"></el-table-column>
-           <!-- 申请人 -->  
           <el-table-column prop="OUT_name" label="申请人" width="120"></el-table-column>
-          <!-- 原先在职企业 -->
           <el-table-column prop="Used_in" label="原先在职企业" width="250"></el-table-column>
-          <!-- 状态 -->
           <el-table-column prop="OUT_tag" label="状态" width="100" 
            :filters="[{ text: '已同意', value: '已同意' },
            { text: '未处理', value: '未处理' },
@@ -51,7 +48,6 @@
                 </el-tag>
               </template>
           </el-table-column>
-          <!-- 操作 -->
           <el-table-column label="操作" width="200">
             <template slot-scope="scope">
               <el-button size="mini" @click="accept_out(scope.$index, scope.row)">同意</el-button>
@@ -59,8 +55,8 @@
             </template>
           </el-table-column>
         </el-table>
-    </el-tab-pane>
-  </el-tabs>
+    </el-tab-pane>  -->
+  <!-- </el-tabs> -->
 </div>
 </template>
 

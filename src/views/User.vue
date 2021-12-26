@@ -6,7 +6,7 @@
         <el-tab-pane label="HR管理" name="first">
 
                 <el-button type="primary" class="addNew" @click="dialogFormVisible = true">添加</el-button>
-                <el-dialog  style="width:1000px"  :visible.sync="dialogFormVisible"  >
+                <el-dialog  style="width:1000px"  :visible.sync="dialogFormVisible" append-to-body>
                     <h2 style="text-align: center;">添加新HR</h2>
 
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="add_Form_1">                    
@@ -345,12 +345,6 @@
     width: 100%;
     height: 500px;
   }
-  .mingdan{
-    margin-left: 400px;
-  }
-  .mingdan_ZG{
-    margin-left: 550px;
-  }
   .el-col1 h3{
     margin-bottom:40px;
   }
@@ -404,7 +398,6 @@
     margin:0 !important;
     display:flex;
     flex-direction:column;
-    
   } 
 
   .dialog-footer{
