@@ -17,37 +17,37 @@
           width="120">
         </el-table-column>
         <el-table-column
-          prop="num"
+          prop="empNo"
           label="员工编号"
           width="150">
         </el-table-column>
         <el-table-column
-          prop="attitude"
+          prop="empAtt"
           label="工作态度"
           width="80">
         </el-table-column>
         <el-table-column
-          prop="ability"
+          prop="empLvl"
           label="业务水平"
           width="80">
         </el-table-column>
         <el-table-column
-          prop="jichushuiping"
+          prop="empAbl"
           label="基础水平"
           width="80">
         </el-table-column>
         <el-table-column
-          prop="zerengan"
+          prop="empRes"
           label="责任感"
           width="80">
         </el-table-column>
         <el-table-column
-          prop="teamwork"
+          prop="empTeam"
           label="团队合作能力"
           width="80">
         </el-table-column>
         <el-table-column
-          prop="study"
+          prop="empLearn"
           label="学习能力"
           width="80">
         </el-table-column>
@@ -82,71 +82,137 @@
         examine: [{
           department:'人力资源部',
           name: '王小虎',
-          num:'20151602',
-          attitude:'100',
-          ability:'95',
-          jichushuiping:'88',
-          zerengan:'84',
-          teamwork:'77',
-          study:'78',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
           zidingyi1:'null',
-        }, 
-        {
+        },{
           department:'人力资源部',
           name: '王小虎',
-          num:'20151602',
-          attitude:'100',
-          ability:'95',
-          jichushuiping:'88',
-          zerengan:'84',
-          teamwork:'77',
-          study:'78',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
           zidingyi1:'null',
-        }, {
+        },{
           department:'人力资源部',
           name: '王小虎',
-          num:'20151602',
-          attitude:'100',
-          ability:'95',
-          jichushuiping:'88',
-          zerengan:'84',
-          teamwork:'77',
-          study:'78',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
           zidingyi1:'null',
-        }, {
+        },{
           department:'人力资源部',
           name: '王小虎',
-          num:'20151602',
-          attitude:'100',
-          ability:'95',
-          jichushuiping:'88',
-          zerengan:'84',
-          teamwork:'77',
-          study:'78',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
           zidingyi1:'null',
-        }, {
+        },{
           department:'人力资源部',
           name: '王小虎',
-          num:'20151602',
-          attitude:'100',
-          ability:'95',
-          jichushuiping:'88',
-          zerengan:'84',
-          teamwork:'77',
-          study:'78',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
           zidingyi1:'null',
-        }, {
+        },{
           department:'人力资源部',
           name: '王小虎',
-          num:'20151602',
-          attitude:'100',
-          ability:'95',
-          jichushuiping:'88',
-          zerengan:'84',
-          teamwork:'77',
-          study:'78',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
           zidingyi1:'null',
-        }]
+        },{
+          department:'人力资源部',
+          name: '王小虎',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
+          zidingyi1:'null',
+        },{
+          department:'人力资源部',
+          name: '王小虎',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
+          zidingyi1:'null',
+        },{
+          department:'人力资源部',
+          name: '王小虎',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
+          zidingyi1:'null',
+        },{
+          department:'人力资源部',
+          name: '王小虎',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
+          zidingyi1:'null',
+        },{
+          department:'人力资源部',
+          name: '王小虎',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
+          zidingyi1:'null',
+        },{
+          department:'人力资源部',
+          name: '王小虎',
+          empNo:'20151602',
+          empAtt:'100',
+          empLvl:'95',
+          empAbl:'88',
+          empRes:'84',
+          empTeam:'77',
+          empLearn:'78',
+          zidingyi1:'null',
+        } 
+        ]
       }
     }
   }

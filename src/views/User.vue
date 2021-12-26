@@ -23,11 +23,11 @@
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
-                  <el-form-item label="账号" prop="HR_id">
+                  <el-form-item label="账号" prop="hrAcc">
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
-                  <el-form-item label="密码" prop="HR_password">
+                  <el-form-item label="密码" prop="hrKey">
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
@@ -44,8 +44,8 @@
                   <el-table-column prop="HRname" label="HR名称" width="180"></el-table-column>
                   <el-table-column prop="eid" label="员工编号" width="180"></el-table-column>
                   <el-table-column prop="HRxianRenzhiWu" label="现任职务" width="180"></el-table-column>
-                  <el-table-column label="账号" prop="HR_id"  width="180"></el-table-column>
-                  <el-table-column label="密码" prop="HR_password"  width="180"></el-table-column>
+                  <el-table-column label="账号" prop="hrAcc"  width="180"></el-table-column>
+                  <el-table-column label="密码" prop="hrKey"  width="180"></el-table-column>
                   <el-table-column
                     label="操作"
                     width="80">
@@ -87,11 +87,11 @@
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
-                   <el-form-item label="账号" prop="ZG_id">
+                   <el-form-item label="账号" prop="manAcc">
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
-                  <el-form-item label="密码" prop="ZG_password">
+                  <el-form-item label="密码" prop="manKey">
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
@@ -107,8 +107,8 @@
               <el-table-column prop="ZGname" label="主管名称" width="135"></el-table-column>
               <el-table-column prop="eid" label="员工编号" width="135"></el-table-column>
               <el-table-column prop="ZGxianRenzhiWu" label="现任职务" width="135"></el-table-column>
-              <el-table-column label="账号" prop="ZG_id" width="180"></el-table-column>
-              <el-table-column label="密码" prop="ZG_password" width="180"></el-table-column>
+              <el-table-column label="账号" prop="manAcc" width="180"></el-table-column>
+              <el-table-column label="密码" prop="manKey" width="180"></el-table-column>
               <el-table-column prop="tag" label="状态" width="100"
               :filters="[{ text: '管理中', value: '管理中' }, 
               { text: '仅查看', value: '仅查看' }]"
@@ -148,50 +148,50 @@
           HRname:'爱德华',
           HRxianRenzhiWu:'部长',
           eid:'2020202',
-          HR_id:'123414',
-          HR_password:'1828288383'
+          hrAcc:'123414',
+          hrKey:'1828288383'
         },{
           HRname:'爱丽丝',
           HRxianRenzhiWu:'部员',
           eid:'20211102',
-          HR_id:'123414',
-          HR_password:'1828288383'
+          hrAcc:'123414',
+          hrKey:'1828288383'
         },{
           HRname:'贝拉',
           HRxianRenzhiWu:'部长',
           eid:'3838738',
-          HR_id:'123414',
-          HR_password:'1828288383'
+          hrAcc:'123414',
+          hrKey:'1828288383'
         },{
           HRname:'雅克布',
           HRxianRenzhiWu:'部长',
           eid:'202027345',
-          HR_id:'123414',
-          HR_password:'1828288383'
+          hrAcc:'123414',
+          hrKey:'1828288383'
         },{
           HRname:'爱德华',
           HRxianRenzhiWu:'部长',
           eid:'2020202',
-          HR_id:'123414',
-          HR_password:'1828288383'
+          hrAcc:'123414',
+          hrKey:'1828288383'
         },{
           HRname:'爱丽丝',
           HRxianRenzhiWu:'部员',
           eid:'20211102',
-          HR_id:'123414',
-          HR_password:'1828288383'
+          hrAcc:'123414',
+          hrKey:'1828288383'
         },{
           HRname:'贝拉',
           HRxianRenzhiWu:'部长',
           eid:'3838738',
-          HR_id:'123414',
-          HR_password:'1828288383'
+          hrAcc:'123414',
+          hrKey:'1828288383'
         },{
           HRname:'雅克布',
           HRxianRenzhiWu:'部长',
           eid:'202027345',
-          HR_id:'123414',
-          HR_password:'1828288383'
+          hrAcc:'123414',
+          hrKey:'1828288383'
         }],
         ZGtableData:[{
           ZGdepartment:'财务部',
@@ -199,64 +199,64 @@
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
           tag:'管理中',
-          ZG_id:'123414',
-          ZG_password:'1828288383'
+          manAcc:'123414',
+          manKey:'1828288383'
         },{
           ZGdepartment:'技术部',
           ZGname:'Edward',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
           tag:'管理中',
-          ZG_id:'123414',
-          ZG_password:'1828288383'
+          manAcc:'123414',
+          manKey:'1828288383'
         },{
           ZGdepartment:'营销部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
           tag:'管理中',
-          ZG_id:'123414',
-          ZG_password:'1828288383'
+          manAcc:'123414',
+          manKey:'1828288383'
         },{
           ZGdepartment:'销售部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
           tag:'管理中',
-          ZG_id:'123414',
-          ZG_password:'1828288383'
+          manAcc:'123414',
+          manKey:'1828288383'
         },{
           ZGdepartment:'财务部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
           tag:'管理中',
-          ZG_id:'123414',
-          ZG_password:'1828288383'
+          manAcc:'123414',
+          manKey:'1828288383'
         },{
           ZGdepartment:'技术部',
           ZGname:'Edward',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
           tag:'管理中',
-          ZG_id:'123414',
-          ZG_password:'1828288383'
+          manAcc:'123414',
+          manKey:'1828288383'
         },{
           ZGdepartment:'营销部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
           tag:'管理中',
-          ZG_id:'123414',
-          ZG_password:'1828288383'
+          manAcc:'123414',
+          manKey:'1828288383'
         },{
           ZGdepartment:'销售部',
           ZGname:'Jacob',
           eid:'12321414',
           ZGxianRenzhiWu:'部长',
           tag:'管理中',
-          ZG_id:'123414',
-          ZG_password:'1828288383'
+          manAcc:'123414',
+          manKey:'1828288383'
         }
         ],
 
