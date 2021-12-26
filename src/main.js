@@ -7,7 +7,9 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import * as echarts from 'echarts'
+import api from './api/'
 Vue.prototype.$echarts = echarts
+Vue.prototype.$api = api;
 
 Vue.use(ElementUI)
 /* eslint-disable no-new */

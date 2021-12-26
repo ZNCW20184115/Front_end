@@ -7,18 +7,18 @@
           <el-tab-pane style="text-align: center;" label="基本信息" name="first" id="firstlabel">
 
             <div class="demo-image__preview">
-              <el-image 
+              <el-image
                 style="width: 100px; height: 100px"
-                :src="url" 
+                :src="url"
                 :preview-src-list="srcList">
               </el-image>
             </div>
-            
-            
+
+
 
             <el-descriptions style="text-align: center;" class="margin-top" title="" :column="2" :size="size" border>
-            
-                      
+
+
             <template slot="extra">
               <el-button type="primary" @click="dialogFormVisible = true">编辑</el-button>
             <div>
@@ -46,14 +46,8 @@
                   <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
                 </div>
-
-                
-
-
-
-
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">
-                
+
                 <el-form-item label="员工姓名" prop="name" >
                     <el-input v-model="ruleForm.name" placeholder="汤姆"></el-input>
                 </el-form-item>
@@ -127,7 +121,7 @@
                     <el-input type="textarea" v-model="ruleForm.desc" placeholder="无"></el-input>
                 </el-form-item>
 
-                
+
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -135,7 +129,7 @@
             </div>
             </el-dialog>
             </div>
-           
+
 
             </template>
 
@@ -146,7 +140,7 @@
                 <i class="el-icon-user"></i>
                 员工姓名
             </template>
-            汤姆
+              {{ ruleForm.name }}
             </el-descriptions-item>
 
             <el-descriptions-item>
@@ -154,7 +148,7 @@
                 <i class="el-icon-user"></i>
                 性别
             </template>
-            男
+              {{ ruleForm.sex }}
             </el-descriptions-item>
 
             <el-descriptions-item>
@@ -162,7 +156,7 @@
                 <i class="el-icon-user"></i>
                 员工编号
             </template>
-            001
+              {{ ruleForm.eid }}
             </el-descriptions-item>
 
 
@@ -274,14 +268,14 @@
             </el-descriptions>
           </el-tab-pane>
 
-          
+
 
 
           <el-tab-pane label="员工管理" name="second">
             <div id="myChart" style="height:450px;width:600px;"></div>
 
             <el-table
-                :data="tableData"
+                :data="evaluateData"
                 style="width: 100%">
                 <el-table-column
                     sortable
@@ -354,9 +348,6 @@ export default {
           major: '',
           apartment: '',
           job: '',
-          name: '',
-          name: '',
-          region: '',
           date1: '',
           date2: '',
           marry: true,
@@ -386,10 +377,6 @@ export default {
           ],
           native: [
             { required: true, message: '请输入籍贯', trigger: 'blur' },
-            { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
-          ],
-          region: [
-            { required: true, message: '请输入户口所在地', trigger: 'blur' },
             { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
           ],
           eb: [
@@ -442,57 +429,68 @@ export default {
         dialogImageUrl: '',
         dialogVisible: false,
         size: '',
-        tableData:[
-            {
-                date:'2021-01',
-                attitude:'100',
-                ability:'95',
-                jichushuiping:'88',
-                zerengan:'84',
-                teamwork:'77',
-                study:'78',
-            },{
-                date:'2021-02',
-                attitude:'100',
-                ability:'95',
-                jichushuiping:'88',
-                zerengan:'84',
-                teamwork:'77',
-                study:'78',
-            },{
-                date:'2021-03',
-                attitude:'100',
-                ability:'95',
-                jichushuiping:'88',
-                zerengan:'84',
-                teamwork:'77',
-                study:'78',
-            },{
-                date:'2021-04',
-                attitude:'100',
-                ability:'95',
-                jichushuiping:'88',
-                zerengan:'84',
-                teamwork:'77',
-                study:'78',
-            },{
-                date:'2021-05',
-                attitude:'100',
-                ability:'95',
-                jichushuiping:'88',
-                zerengan:'84',
-                teamwork:'77',
-                study:'78',
-            },{
-                date:'2021-06',
-                attitude:'100',
-                ability:'95',
-                jichushuiping:'88',
-                zerengan:'84',
-                teamwork:'77',
-                study:'78',
-            },
-        ]
+        evaluateData: {
+          empNo:'',
+          empAtt:'',
+          empLvl:'',
+          empAbl:'',
+          empRes:'',
+          empTeam:'',
+          empLearn:'',
+          empEva:'',
+          evaMan:''
+        }
+        // tableData:[
+        //     {
+        //         date:'2021-01',
+        //         attitude:'100',
+        //         ability:'95',
+        //         jichushuiping:'88',
+        //         zerengan:'84',
+        //         teamwork:'77',
+        //         study:'78',
+        //     },{
+        //         date:'2021-02',
+        //         attitude:'100',
+        //         ability:'95',
+        //         jichushuiping:'88',
+        //         zerengan:'84',
+        //         teamwork:'77',
+        //         study:'78',
+        //     },{
+        //         date:'2021-03',
+        //         attitude:'100',
+        //         ability:'95',
+        //         jichushuiping:'88',
+        //         zerengan:'84',
+        //         teamwork:'77',
+        //         study:'78',
+        //     },{
+        //         date:'2021-04',
+        //         attitude:'100',
+        //         ability:'95',
+        //         jichushuiping:'88',
+        //         zerengan:'84',
+        //         teamwork:'77',
+        //         study:'78',
+        //     },{
+        //         date:'2021-05',
+        //         attitude:'100',
+        //         ability:'95',
+        //         jichushuiping:'88',
+        //         zerengan:'84',
+        //         teamwork:'77',
+        //         study:'78',
+        //     },{
+        //         date:'2021-06',
+        //         attitude:'100',
+        //         ability:'95',
+        //         jichushuiping:'88',
+        //         zerengan:'84',
+        //         teamwork:'77',
+        //         study:'78',
+        //     },
+        // ]
       };
     },
     methods: {
@@ -512,10 +510,6 @@ export default {
         return isJPG && isLt2M;
       },
 
-
-
-
-
         submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -529,52 +523,19 @@ export default {
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-      load(){
-        this.loading = true
-        request.get("/employee/{id}",{
-          params:{
-            employeeId: this.form.id
-          }
-        }).then(res => {
-          this.loading = false
-          this.tableData = res.data.records
+      load() {
+        this.$api.lkUAPI.load(this).then(res =>{
         })
       },
 
-      update(){
-        if(this.form.id){ //更新
-          request.put("/employee/update", this.form).then(res => {
-            console.log(res)
-          })
-          if(res.code === '0'){
-            this.$message({
-              type:"success",
-              message: "操作成功"
-            })
-          } else {
-            this.$message({
-              type:"error",
-              message: res.msg
-            })
-          }
-        } else { //新增
-          request.post("/employee/update", this.form).then(res => {
-            console.log(res)
-          })
-          if(res.code === '0'){
-            this.$message({
-              type:"success",
-              message: "操作成功"
-            })
-          } else {
-            this.$message({
-              type:"error",
-              message: res.msg
-            })
-          }
-        }
+      loadEva() {
+        this.$api.lkUAPI.loadEva(this).then(res =>{
+        })
+      },
 
-
+      update() {
+        this.$api.lkUAPI.update(this.ruleForm,this).then(res =>{
+        })
       },
       handleClick(tab, event) {
         console.log(tab, event);
@@ -590,7 +551,7 @@ export default {
             //初始化echarts实例
             let myChart = this.$echarts.init(document.getElementById('myChart'))
             //绘制图表
-            var option = {
+        var option = {
                 title: {
                     text: '员工历史考核数据',
                     x:'center',
@@ -686,7 +647,7 @@ export default {
                         },
                         data: [{
                             //设置各个指标的值
-                                value: [67, 76,67, 88, 87],
+                                value: [this.evaluateData.empAtt,this.evaluateData.empLvl,this.evaluateData.empAbl, this.evaluateData.empRes, this.evaluateData.empTeam, this.evaluateData.empLearn],
     //									name: '图一',
                                 //让数值在拐点处显示
                                 label:{

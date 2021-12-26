@@ -4,12 +4,12 @@ import router from "@/router";
 //封装axios插件  进入vue文件夹,npm i axios -S
 
 const request = axios.create({
-  baseURL: "/api",
-  timeout: 5000
-})
+    baseURL: "/api",
+    timeout: 5000
+  })
 
 // 请求白名单，如果请求在白名单里面，将不会被拦截校验权限
-const whiteUrls = ["/user/login", '/user/register']
+const whiteUrls = [" /user/login", '/user/register']
 
 // request 拦截器
 // 可以自请求发送前对请求做一些处理
