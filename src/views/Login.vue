@@ -115,14 +115,14 @@ export default {
         handleClick(tab, event) {
         console.log(tab, event);
       },
-    // login() {
-    //   const data={username : "123", password : "123"};
-    //   if(this.form.password===data.password&&this.form.username===data.username){
-    //     this.$router.push("/index");
-    //   }else {
-    //     // return this.$message.error('用户名或密码错误!');
-    //   }
-    // },
+    login() {
+      const data={username : "123", password : "123"};
+      if(this.form.password===data.password&&this.form.username===data.username){
+        this.$router.push("/index");
+      }else {
+        // return this.$message.error('用户名或密码错误!');
+      }
+    },
     // login() {
     //   request.post("/user/login", this.form).then(res => {
     //     if(res.code === '0'){
@@ -140,13 +140,13 @@ export default {
     //   })
     // },
 
-    login(){
-          this.$api.loginManageAPI.login(this.form,this).then(res =>{
-          })
-    },
-    register() {
-      this.$router.push({ name: "Register" });
-    },
+    // login(){
+    //       this.$api.loginManageAPI.login(this.form,this).then(res =>{
+    //       })
+    // },
+    // register() {
+    //   this.$router.push({ name: "Register" });
+    // },
   },
 };
 </script>

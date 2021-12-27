@@ -7,7 +7,7 @@
         style="width: 100%">
         <el-table-column
           fixed
-          prop="name"
+          prop="empName"
           label="姓名"
           width="120">
         </el-table-column>
@@ -52,19 +52,23 @@
           width="80">
         </el-table-column>
         <el-table-column
-          prop="zidingyi1"
-          label="自定义"
+          prop="empEva"
+          label="评价"
           width="80">
         </el-table-column>
         <el-table-column
-          fixed="right"
+          prop="empMan"
+          label="评价人"
+          width="80">
+        </el-table-column>
+        <el-table-column
           label="操作"
           width="100">
           <template slot-scope="scope">
-            <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button> -->
-            <el-button @click="change(scope.row)" type="text" size="small">编辑</el-button>
+            <el-button @click="handleClick(scope.row)" type="text" size="small"><router-link  to="/Lookuser">查看</router-link></el-button>
+            <!-- <el-button @click="change(scope.row)" type="text" size="small">编辑</el-button> -->
           </template>
-        </el-table-column>
+        </el-table-column> 
       </el-table>
   </div>
 </template>
@@ -89,7 +93,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -100,7 +105,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -111,7 +117,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -122,7 +129,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -133,7 +141,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -144,7 +153,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -155,7 +165,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -166,7 +177,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -177,7 +189,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -188,7 +201,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -199,7 +213,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         },{
           department:'人力资源部',
           name: '王小虎',
@@ -210,7 +225,8 @@
           empRes:'84',
           empTeam:'77',
           empLearn:'78',
-          zidingyi1:'null',
+          empEva:'不错',
+          empMan:'李明'
         } 
         ]
       }
