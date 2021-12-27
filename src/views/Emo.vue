@@ -98,13 +98,28 @@
             </el-table-column>
             <el-table-column prop="empSex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
             </el-table-column>
-            <el-table-column prop="cpnName" label="所属公司" width="360" >
+            <el-table-column prop="cpnName" label="所属公司" width="160" >
             </el-table-column>
 
             <el-table-column prop="empPhone" label="手机号" width="180">
             </el-table-column>
             
             <el-table-column prop="askStatus" fixed="right" label="是否获取权限" width="120">
+              
+            </el-table-column>
+
+            <el-table-column prop="cz" fixed="right" label="操作" width="200">
+              <template slot-scope="scope">
+                
+                <div id="anniu" style="margin-right:35px">
+                  <router-link  to="/Lookuser">
+                <el-button  size="mini" type="primary" >查看</el-button>
+                </router-link>
+                </div>
+                
+
+                
+              </template>
             </el-table-column>
 
 
