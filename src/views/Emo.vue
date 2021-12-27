@@ -50,15 +50,15 @@
             <el-table-column fixed prop="date" label="日期" sortable width="150" column-key="date" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
         :filter-method="filterHandler">
             </el-table-column>
-            <el-table-column prop="name" label="姓名" width="120">
+            <el-table-column prop="empName" label="姓名" width="120">
             </el-table-column>
-            <el-table-column prop="sex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
+            <el-table-column prop="empSex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
             </el-table-column>
-            <el-table-column prop="apartment" label="所属公司" width="120">
+            <el-table-column prop="cpnName" label="所属公司" width="120">
             </el-table-column>
-            <el-table-column prop="address" label="地址" width="200">
+            <el-table-column prop="cpnAdr" label="地址" width="200">
             </el-table-column>
-            <el-table-column prop="zip" label="电话" width="80">
+            <el-table-column prop="empPhone" label="电话" width="80">
             </el-table-column>
             <el-table-column prop="cz" fixed="right" label="操作" width="200">
               <template slot-scope="scope">
@@ -95,14 +95,14 @@
             <el-table-column fixed prop="date" label="日期" sortable width="150" column-key="date" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
         :filter-method="filterHandler">
             </el-table-column>
-            <el-table-column prop="name" label="姓名" width="120">
+            <el-table-column prop="empName" label="姓名" width="120">
             </el-table-column>
-            <el-table-column prop="sex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
+            <el-table-column prop="empSex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
             </el-table-column>
-            <el-table-column prop="apartment" label="所属公司" width="360" >
+            <el-table-column prop="cpnName" label="所属公司" width="360" >
             </el-table-column>
 
-            <el-table-column prop="zip" label="联系电话" width="180">
+            <el-table-column prop="empPhone" label="联系电话" width="180">
             </el-table-column>
             
             <el-table-column fixed="right" label="获取权限" width="120">
@@ -185,13 +185,13 @@
       
       loadAll() {
         return [
-          { "value": "王一", "sex": "女","birthday":"1999.5.1","company":"中国移动" },
-          { "value": "李二", "sex": "男","birthday":"1994.5.16","company":"中国移动" },
-          { "value": "刘三", "sex": "女","birthday":"1996.5.1","company":"中国移动" },
-          { "value": "赵四", "sex": "男","birthday":"1989.5.14","company":"中国移动" },
-          { "value": "陈无", "sex": "女","birthday":"1994.5.9","company":"中国移动" },
-          { "value": "金星", "sex": "男","birthday":"1993.8.1","company":"中国移动" },
-          { "value": "张刘", "sex": "男","birthday":"1999.5.1","company":"中国移动" },
+          { "value": "王一", "empSex": "女","birthday":"1999.5.1","company":"中国移动" },
+          { "value": "李二", "empSex": "男","birthday":"1994.5.16","company":"中国移动" },
+          { "value": "刘三", "empSex": "女","birthday":"1996.5.1","company":"中国移动" },
+          { "value": "赵四", "empSex": "男","birthday":"1989.5.14","company":"中国移动" },
+          { "value": "陈无", "empSex": "女","birthday":"1994.5.9","company":"中国移动" },
+          { "value": "金星", "empSex": "男","birthday":"1993.8.1","company":"中国移动" },
+          { "value": "张刘", "empSex": "男","birthday":"1999.5.1","company":"中国移动" },
           
         ];
       },
@@ -213,8 +213,8 @@
         };
       },
       handleSelect(item) {
-        //alert(item.value+'-'+item.sex+'-'+item.birthday+'-'+item.company);
-        this.$confirm(item.value+'-'+item.sex+'-'+item.birthday+'-'+item.company, {
+        //alert(item.value+'-'+item.empSex+'-'+item.birthday+'-'+item.company);
+        this.$confirm(item.value+'-'+item.empSex+'-'+item.birthday+'-'+item.company, {
           confirmButtonText: '发起申请',
           cancelButtonText: '取消',
         }).then(() => {
@@ -232,7 +232,7 @@
         
 
       clickMenu(item) {
-        this.$router.push({ name: item.name });
+        this.$router.push({ empName: item.empName });
         this.$store.commit("selectMenu", item);
       },
         resetDateFilter() {
@@ -291,91 +291,91 @@
 
         tableData: [{
           date: '2016-05-03',
-          name: '李六',
-          sex: '男',
-          apartment: 'A公司',
-          address: '...',
-          zip: 200333
+          empName: '李六',
+          empSex: '男',
+          cpnName: 'A公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-08',
-          name: '王小虎',
-          sex: '男',
-          apartment: 'C公司',
-          address: '...',
-          zip: 200333
+          empName: '王小虎',
+          empSex: '男',
+          cpnName: 'C公司',
+          cpnAdr: '...',
+          empPhone: 200333
         },{
           date: '2016-05-02',
-          name: '王小虎',
-          sex: '男',
-          apartment: 'B公司',
-          address: '...',
-          zip: 200333
+          empName: '王小虎',
+          empSex: '男',
+          cpnName: 'B公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-04',
-          name: '张大头',
-          sex: '男',
-          apartment: 'A公司',
-          address: '...',
-          zip: 200333
+          empName: '张大头',
+          empSex: '男',
+          cpnName: 'A公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-01',
-          name: '贺伯伯',
-          sex: '男',
-          apartment: 'B公司',
-          address: '...',
-          zip: 200333
+          empName: '贺伯伯',
+          empSex: '男',
+          cpnName: 'B公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-08',
-          name: '蒋卫慧',
-          sex: '女',
-          apartment: 'A公司',
-          address: '...',
-          zip: 200333
+          empName: '蒋卫慧',
+          empSex: '女',
+          cpnName: 'A公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-06',
-          name: '王小虎',
-          sex: '男',
-          apartment: 'A公司',
-          address: '...',
-          zip: 200333
+          empName: '王小虎',
+          empSex: '男',
+          cpnName: 'A公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-07',
-          name: '卢阿姨',
-          sex: '女',
-          apartment: 'A公司',
-          address: '...',
-          zip: 200333
+          empName: '卢阿姨',
+          empSex: '女',
+          cpnName: 'A公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }],
 
 
         tableData1: [{
           date: '2016-05-03',
-          name: '汤姆斯克鲁斯',
-          sex: '男',
-          apartment: 'WB公司',
-          address: '...',
-          zip: 200333
+          empName: '汤姆斯克鲁斯',
+          empSex: '男',
+          cpnName: 'WB公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-08',
-          name: '余华',
-          sex: '男',
-          apartment: 'W公司',
-          address: '...',
-          zip: 200333
+          empName: '余华',
+          empSex: '男',
+          cpnName: 'W公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-06',
-          name: '克里斯汉克斯',
-          sex: '男',
-          apartment: 'WB公司',
-          address: '...',
-          zip: 200333
+          empName: '克里斯汉克斯',
+          empSex: '男',
+          cpnName: 'WB公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }, {
           date: '2016-05-07',
-          name: '玛丽莲梦露',
-          sex: '女',
-          apartment: 'WB公司',
-          address: '...',
-          zip: 200333
+          empName: '玛丽莲梦露',
+          empSex: '女',
+          cpnName: 'WB公司',
+          cpnAdr: '...',
+          empPhone: 200333
         }]
 
       }
