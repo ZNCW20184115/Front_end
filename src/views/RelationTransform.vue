@@ -1,9 +1,8 @@
 <template>
 <div>
-  <!-- <el-tabs v-model="activeName" @tab-click="handleClick"> -->
-    <!--转入审批-->
-    <!-- <el-tab-pane label="转入审批" name="first"> -->
-      <h2>转入申请</h2>
+  <el-tabs v-model="activeName" @tab-click="handleClick"> 
+    <!--转入申请-->
+     <el-tab-pane label="转入申请" name="first">
         <el-table :data="in_tableData" style="width: 100%">
             <!-- 申请日期 -->
             <el-table-column prop="empEntry" label="申请日期" sortable width="180"></el-table-column>
@@ -30,33 +29,29 @@
                 </template>
             </el-table-column>
         </el-table>
-    <!-- </el-tab-pane> -->
-    <!-- 转出审批 -->
-     <!-- <el-tab-pane label="转出审批" name="second">
-        <el-table :data="out_tableData" style="width: 100%">
-          <el-table-column prop="OUT_date" label="申请日期" sortable width="180"></el-table-column>
-          <el-table-column prop="OUT_name" label="申请人" width="120"></el-table-column>
-          <el-table-column prop="Used_in" label="原先在职企业" width="250"></el-table-column>
-          <el-table-column prop="OUT_tag" label="状态" width="100" 
-           :filters="[{ text: '已同意', value: '已同意' },
-           { text: '未处理', value: '未处理' },
-           { text: '未同意', value: '未同意' }]"
-           :filter-method="filterTag" filter-placement="bottom-end">
-              <template slot-scope="scope">
-                <el-tag :type="scope.row.OUT_tag === '未处理' ? 'primary' : 'success'" disable-transitions>
-                 {{scope.row.OUT_tag}}
-                </el-tag>
-              </template>
-          </el-table-column>
-          <el-table-column label="操作" width="200">
-            <template slot-scope="scope">
-              <el-button size="mini" @click="accept_out(scope.$index, scope.row)">同意</el-button>
-              <el-button size="mini" type="danger" @click="reject_out(scope.$index, scope.row)">拒绝</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-    </el-tab-pane>  -->
-  <!-- </el-tabs> -->
+    </el-tab-pane>
+    <!-- 发起转出 -->
+     <el-tab-pane label="发起转出" name="second">
+        <el-form ref="out_tableData" :model="out_tableData" label-width="100px" style="margin-top:40px">
+          <el-form-item label="员工姓名" prop="empName">
+            <el-input v-model="out_tableData.empName"></el-input>
+          </el-form-item><br>
+          <el-form-item label="员工编号" prop="empNo">
+            <el-input v-model="out_tableData.empNo"></el-input>
+          </el-form-item><br>
+          <el-form-item label="担任职务" prop="empJob">
+            <el-input v-model="out_tableData.empJob"></el-input>
+          </el-form-item><br>
+          <el-form-item label="转出企业" prop="out_cpn">
+            <el-input v-model="out_tableData.out_cpn"></el-input>
+          </el-form-item><br>
+          <el-form-item style="margin-top:30px">
+            <el-button type="primary" @click="onSubmit">发起请求</el-button>
+            <el-button>取消</el-button>
+          </el-form-item>
+        </el-form>
+    </el-tab-pane>  
+   </el-tabs>
 </div>
 </template>
 
@@ -105,43 +100,13 @@
         },
         ],
         out_tableData: [
-            // 转出处理
-        // {
-        //   OUT_date: '2016-05-02',
-        //   OUT_name: '王小虎',
-        //   Used_in: '上海市普陀区金沙江路 1518 弄',
-        //   OUT_tag: '已拒绝'
-        // }, {
-        //   OUT_date: '2016-05-04',
-        //   OUT_name: '王小虎',
-        //   Used_in: '上海市普陀区金沙江路 1517 弄',
-        //   OUT_tag: '已同意'
-        // }, {
-        //   OUT_date: '2016-05-01',
-        //   OUT_name: '王小虎',
-        //   Used_in: '上海市普陀区金沙江路 1518 弄',
-        //   OUT_tag: '未处理' 
-        // }, {
-        //   OUT_date: '2016-05-04',
-        //   OUT_name: '王小虎',
-        //   Used_in: '上海市普陀区金沙江路 1518 弄',
-        //   OUT_tag: '未处理'
-        // },{
-        //   OUT_date: '2016-05-04',
-        //   OUT_name: '王小虎',
-        //   Used_in: '上海市普陀区金沙江路 1517 弄',
-        //   OUT_tag: '已拒绝'
-        // }, {
-        //   OUT_date: '2016-05-01',
-        //   OUT_name: '王小虎',
-        //   Used_in: '上海市普陀区金沙江路 1518 弄',
-        //   OUT_tag: '未处理'
-        // }, {
-        //   OUT_date: '2016-05-03',
-        //   OUT_name: '王小虎',
-        //   Used_in: '上海市普陀区金沙江路 1518 弄',
-        //   OUT_tag: '未处理'
-        // }
+        // 发起转出
+        {
+          empName: '',
+          empNo: '',
+          empJob: '',
+          out_cpn:''
+        }
         ]
       };  
     },
@@ -149,26 +114,19 @@
       //操作栏同意键单击响应函数in
       accept_in(tab,event){
         event.IN_tag="已同意";
-        //event.tag
       },
-      //操作栏同意键单击响应函数out
-      // accept_out(tab,event){
-      //   event.OUT_tag="已同意";
-      // },
-      //操作栏拒绝键单击响应函数in
       reject_in(tab,event){
         event.IN_tag="已拒绝";
       },
-      //操作栏拒绝键单击响应函数out
-      // reject_out(tab,event){
-      //   event.OUT_tag="已拒绝";
-      // },
       handleClick(tab, event) {
         console.log(tab, event);
       },
       filterTag(value, row) {
         return row.tag === value;
       },
+      onSubmit() {
+        console.log('submit!');
+      }
     }
   };
 </script>
