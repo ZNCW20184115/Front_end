@@ -48,36 +48,36 @@
                 </div>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="demo-ruleForm">
 
-                <el-form-item label="员工姓名" prop="name" >
-                    <el-input v-model="ruleForm.name" placeholder="汤姆"></el-input>
+                <el-form-item label="员工姓名" prop="empName" >
+                    <el-input v-model="ruleForm.empName" placeholder="汤姆"></el-input>
                 </el-form-item>
 
-                <el-form-item label="性别" prop="sex" >
-                    <el-select v-model="ruleForm.sex" placeholder="男">
+                <el-form-item label="性别" prop="empSex" >
+                    <el-select v-model="ruleForm.empSex" placeholder="男">
                     <el-option label="男" value="男"></el-option>
                     <el-option label="女" value="女"></el-option>
                     </el-select>
                 </el-form-item>
 
-                <el-form-item label="员工编号" prop="eid">
-                    <el-input v-model="ruleForm.eid" placeholder="001"></el-input>
+                <el-form-item label="员工编号" prop="empNo">
+                    <el-input v-model="ruleForm.empNo" placeholder="001"></el-input>
                 </el-form-item>
 
-                <el-form-item label="身份证号" prop="idcard">
-                    <el-input v-model="ruleForm.idcard" placeholder="310112200306057845"></el-input>
+                <el-form-item label="身份证号" prop="empId">
+                    <el-input v-model="ruleForm.empId" placeholder="310112200306057845"></el-input>
                 </el-form-item>
 
-                <el-form-item label="手机号" prop="phone">
-                    <el-input v-model="ruleForm.phone" placeholder="18100000000"></el-input>
+                <el-form-item label="手机号" prop="empPhone">
+                    <el-input v-model="ruleForm.empPhone" placeholder="18100000000"></el-input>
                 </el-form-item>
 
-                <el-form-item label="籍贯" prop="native">
-                    <el-input v-model="ruleForm.native" placeholder="苏州市"></el-input>
+                <el-form-item label="籍贯" prop="empNp">
+                    <el-input v-model="ruleForm.empNp" placeholder="苏州市"></el-input>
                 </el-form-item>
 
                 <el-form-item label="出生日期" required >
-                    <el-form-item prop="date1">
-                        <el-date-picker type="date" placeholder="2002.3.6" v-model="ruleForm.date1"></el-date-picker>
+                    <el-form-item prop="empBirth">
+                        <el-date-picker type="date" placeholder="2002.3.6" v-model="ruleForm.empBirth"></el-date-picker>
                     </el-form-item>
                 </el-form-item>
 
@@ -85,40 +85,40 @@
                     <el-input v-model="ruleForm.region" placeholder="浙江"></el-input>
                 </el-form-item>
 
-                <el-form-item label="最高学历" prop="eb">
-                    <el-input v-model="ruleForm.eb" placeholder="研究生"></el-input>
+                <el-form-item label="最高学历" prop="empEdu">
+                    <el-input v-model="ruleForm.empEdu" placeholder="研究生"></el-input>
                 </el-form-item>
 
-                <el-form-item label="毕业院校" prop="school">
-                    <el-input v-model="ruleForm.school" placeholder="交通大学"></el-input>
+                <el-form-item label="毕业院校" prop="empSch">
+                    <el-input v-model="ruleForm.empSch" placeholder="交通大学"></el-input>
                 </el-form-item>
 
-                <el-form-item label="专业" prop="major">
-                    <el-input v-model="ruleForm.major" placeholder="软件工程"></el-input>
+                <el-form-item label="专业" prop="empPro">
+                    <el-input v-model="ruleForm.empPro" placeholder="软件工程"></el-input>
                 </el-form-item>
 
-                <el-form-item label="任职部门" prop="apartment">
-                    <el-input v-model="ruleForm.apartment" placeholder="开发部"></el-input>
+                <el-form-item label="任职部门" prop="empDep">
+                    <el-input v-model="ruleForm.empDep" placeholder="开发部"></el-input>
                 </el-form-item>
 
-                <el-form-item label="担任职务" prop="job">
-                    <el-input v-model="ruleForm.job" placeholder="架构师"></el-input>
+                <el-form-item label="担任职务" prop="empJob">
+                    <el-input v-model="ruleForm.empJob" placeholder="架构师"></el-input>
                 </el-form-item>
 
                 <el-form-item label="入职时间" required>
-                    <el-form-item prop="date2">
-                        <el-date-picker type="date" placeholder="2020.1.3" v-model="ruleForm.date2"></el-date-picker>
+                    <el-form-item prop="empEntry">
+                        <el-date-picker type="date" placeholder="2020.1.3" v-model="ruleForm.empEntry"></el-date-picker>
                     </el-form-item>
                 </el-form-item>
 
-                <el-form-item label="是否已婚" prop="marry">
-                    <el-switch v-model="ruleForm.marry" placeholder="是"></el-switch>
+                <el-form-item label="是否已婚" prop="empMarry">
+                    <el-switch v-model="ruleForm.empMarry" placeholder="是"></el-switch>
                 </el-form-item>
 
 
 
-                <el-form-item label="备注" prop="desc" style="width:580px;">
-                    <el-input type="textarea" v-model="ruleForm.desc" placeholder="无"></el-input>
+                <el-form-item label="备注" prop="empRemark" style="width:580px;">
+                    <el-input type="textarea" v-model="ruleForm.empRemark" placeholder="无"></el-input>
                 </el-form-item>
 
 
@@ -140,7 +140,7 @@
                 <i class="el-icon-user"></i>
                 员工姓名
             </template>
-              {{ ruleForm.name }}
+              {{ ruleForm.empName }}
             </el-descriptions-item>
 
             <el-descriptions-item>
@@ -148,7 +148,7 @@
                 <i class="el-icon-user"></i>
                 性别
             </template>
-              {{ ruleForm.sex }}
+              {{ ruleForm.empSex }}
             </el-descriptions-item>
 
             <el-descriptions-item>
@@ -156,7 +156,7 @@
                 <i class="el-icon-user"></i>
                 员工编号
             </template>
-              {{ ruleForm.eid }}
+              {{ ruleForm.empNo }}
             </el-descriptions-item>
 
 
@@ -336,76 +336,76 @@ export default {
         url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
 
           ruleForm: {
-          name: '',
-          sex: '',
-          eid: '',
-          idcard: '',
-          phone: '',
-          native: '',
+          empName: '',
+          empSex: '',
+          empNo: '',
+          empId: '',
+          empPhone: '',
+          empNp: '',
           region: '',
-          eb: '',
-          school: '',
-          major: '',
-          apartment: '',
-          job: '',
-          date1: '',
-          date2: '',
-          marry: true,
+          empEdu: '',
+          empSch: '',
+          empPro: '',
+          empDep: '',
+          empJob: '',
+          empBirth: '',
+          empEntry: '',
+          empMarry: true,
           type: [],
           resource: '',
-          desc: ''
+          empRemark: ''
         },
         rules: {
-          name: [
+          empName: [
             { required: true, message: '请输入员工姓名', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
-          sex: [
+          empSex: [
             { required: true, message: '请选择性别', trigger: 'change' }
           ],
-          eid: [
+          empNo: [
             { required: true, message: '请输入员工编号', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个数字', trigger: 'blur' }
           ],
-          idcard: [
+          empId: [
             { required: true, message: '请输入身份证号', trigger: 'blur' },
             { min: 16, max: 18, message: '长度在 16 到 18 个字符', trigger: 'blur' }
           ],
-          phone: [
+          empPhone: [
             { required: true, message: '请输入手机号', trigger: 'blur' },
             { min: 8, max: 11, message: '长度在 8 到 11 个数字', trigger: 'blur' }
           ],
-          native: [
+          empNp: [
             { required: true, message: '请输入籍贯', trigger: 'blur' },
             { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
           ],
-          eb: [
+          empEdu: [
             { required: true, message: '请输入最高学历', trigger: 'blur' },
             { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
           ],
-          school: [
+          empSch: [
             { required: true, message: '请输入毕业院校', trigger: 'blur' },
             { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
           ],
-          major: [
+          empPro: [
             { required: true, message: '请输入专业', trigger: 'blur' },
             { min: 2, max: 8, message: '长度在 2 到 8 个字符', trigger: 'blur' }
           ],
-          apartment: [
+          empDep: [
             { required: true, message: '请输入任职部门', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
-          job: [
+          empJob: [
             { required: true, message: '请输入担任职务', trigger: 'blur' },
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
           region: [
             { required: true, message: '请选择户口所在地', trigger: 'change' }
           ],
-          date1: [
+          empBirth: [
             { type: 'date', required: true, message: '请选择出生日期', trigger: 'change' }
           ],
-          date2: [
+          empEntry: [
             { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
           ],
           type: [
@@ -414,7 +414,7 @@ export default {
           resource: [
             { required: true, message: '请选择活动资源', trigger: 'change' }
           ],
-          desc: [
+          empRemark: [
             { required: true, message: '请填写备注', trigger: 'blur' }
           ]
         },

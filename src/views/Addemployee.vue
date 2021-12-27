@@ -51,8 +51,8 @@
     <el-input v-model="ruleForm.empId"></el-input>
   </el-form-item>
 
-  <el-form-item label="手机号" prop="phone">
-    <el-input v-model="ruleForm.phone"></el-input>
+  <el-form-item label="手机号" prop="empPhone">
+    <el-input v-model="ruleForm.empPhone"></el-input>
   </el-form-item>
 
   <el-form-item label="籍贯" prop="empNp">
@@ -125,7 +125,7 @@
           empSex: '',
           empNo: '',
           empId: '',
-          phone: '',
+          empPhone: '',
           empNp: '',
           region: '',
           empEdu: '',
@@ -159,7 +159,7 @@
             { required: true, message: '请输入身份证号', trigger: 'blur' },
             { min: 16, max: 18, message: '长度在 16 到 18 个字符', trigger: 'blur' }
           ],
-          phone: [
+          empPhone: [
             { required: true, message: '请输入手机号', trigger: 'blur' },
             { min: 8, max: 11, message: '长度在 8 到 11 个数字', trigger: 'blur' }
           ],

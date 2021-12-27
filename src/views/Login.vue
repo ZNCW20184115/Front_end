@@ -13,20 +13,20 @@
           :rules="formRules"
           label-width="80px"
         >
-          <el-form-item prop="username" label="用户名">
+          <el-form-item prop="hrAcc" label="用户名">
             <el-input
-              v-model="form.username"
+              v-model="form.hrAcc"
               autocomplete="off"
               placeholder="请输入用户名"
             >
             </el-input>
           </el-form-item>
-          <el-form-item prop="password" label="密码">
+          <el-form-item prop="hrKey" label="密码">
             <el-input
-              v-model="form.password"
+              v-model="form.hrKey"
               autocomplete="off"
               placeholder="请输入密码"
-              show-password
+              show-hrKey
             >
             </el-input>
           </el-form-item>
@@ -47,20 +47,20 @@
           :rules="formRules"
           label-width="80px"
         >
-          <el-form-item prop="username" label="用户名">
+          <el-form-item prop="manAcc" label="用户名">
             <el-input
-              v-model="form.username"
+              v-model="form.manAcc"
               autocomplete="off"
               placeholder="请输入用户名"
             >
             </el-input>
           </el-form-item>
-          <el-form-item prop="password" label="密码">
+          <el-form-item prop="manKey" label="密码">
             <el-input
-              v-model="form.password"
+              v-model="form.manKey"
               autocomplete="off"
               placeholder="请输入密码"
-              show-password
+              show-manKey
             >
             </el-input>
           </el-form-item>
@@ -98,14 +98,14 @@ export default {
        activeName: 'first',
 
       form: {
-        username: "",
-        password: "",
+        hrAcc: "",
+        hrKey: "",
       },
       formRules: {
-        username: [
+        hrAcc: [
           { required: true, message: "请输入用户名", trigger: "change" },
         ],
-        password: [
+        hrKey: [
           { required: true, message: "请输入密码", trigger: "change" },
         ],
       },
@@ -116,8 +116,8 @@ export default {
         console.log(tab, event);
       },
     login() {
-      const data={username : "123", password : "123"};
-      if(this.form.password===data.password&&this.form.username===data.username){
+      const data={hrAcc : "123", hrKey : "123"};
+      if(this.form.hrKey===data.hrKey&&this.form.hrAcc===data.hrAcc){
         this.$router.push("/index");
       }else {
         // return this.$message.error('用户名或密码错误!');
