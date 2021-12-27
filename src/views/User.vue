@@ -11,15 +11,15 @@
 
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="add_Form_1">                    
 
-                  <el-form-item label="HR姓名" prop="name">
+                  <el-form-item label="HR姓名" prop="empName">
                     <el-input v-model="ruleForm.name"></el-input>
                   </el-form-item>
                   
-                  <el-form-item label="员工编号" prop="eid">
+                  <el-form-item label="员工编号" prop="empNo">
                     <el-input v-model="ruleForm.eid"></el-input>
                   </el-form-item>
 
-                  <el-form-item label="担任职务" prop="job">
+                  <el-form-item label="Email" prop="Email">
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
@@ -41,9 +41,9 @@
 
 
                 <el-table ref="filterTable" :data="HRtableData" style="width: 980px">
-                  <el-table-column prop="HRname" label="HR名称" width="180"></el-table-column>
-                  <el-table-column prop="eid" label="员工编号" width="180"></el-table-column>
-                  <el-table-column prop="HRxianRenzhiWu" label="现任职务" width="180"></el-table-column>
+                  <el-table-column prop="empName" label="HR名称" width="180"></el-table-column>
+                  <el-table-column prop="empNo" label="员工编号" width="180"></el-table-column>
+                  <el-table-column prop="Email" label="Email" width="180"></el-table-column>
                   <el-table-column label="账号" prop="hrAcc"  width="180"></el-table-column>
                   <el-table-column label="密码" prop="hrKey"  width="180"></el-table-column>
                   <el-table-column
@@ -71,11 +71,11 @@
 
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="150px" class="add_Form_2">                    
 
-                   <el-form-item label="主管姓名" prop="name">
+                   <el-form-item label="主管姓名" prop="empName">
                     <el-input v-model="ruleForm.name"></el-input>
                   </el-form-item>
 
-                  <el-form-item label="员工编号" prop="eid">
+                  <el-form-item label="员工编号" prop="empNo">
                     <el-input v-model="ruleForm.eid"></el-input>
                   </el-form-item>
 
@@ -83,7 +83,7 @@
                     <el-input v-model="ruleForm.apartment"></el-input>
                   </el-form-item>
 
-                  <el-form-item label="担任职务" prop="job">
+                  <el-form-item label="Email" prop="Email">
                     <el-input v-model="ruleForm.job"></el-input>
                   </el-form-item>
 
@@ -104,11 +104,11 @@
 
             <el-table ref="filterTable" :data="ZGtableData" style="width: 1250px">
               <el-table-column sortable prop="ZGdepartment" label="部门名称" width="135"></el-table-column>
-              <el-table-column prop="ZGname" label="主管名称" width="135"></el-table-column>
-              <el-table-column prop="eid" label="员工编号" width="135"></el-table-column>
-              <el-table-column prop="ZGxianRenzhiWu" label="现任职务" width="135"></el-table-column>
-              <el-table-column label="账号" prop="manAcc" width="180"></el-table-column>
-              <el-table-column label="密码" prop="manKey" width="180"></el-table-column>
+              <el-table-column prop="empName" label="主管名称" width="135"></el-table-column>
+              <el-table-column prop="empNo" label="员工编号" width="135"></el-table-column>
+              <el-table-column prop="Email" label="Email" width="200"></el-table-column>
+              <el-table-column label="账号" prop="manAcc" width="150"></el-table-column>
+              <el-table-column label="密码" prop="manKey" width="150"></el-table-column>
               <el-table-column prop="tag" label="状态" width="100"
               :filters="[{ text: '管理中', value: '管理中' }, 
               { text: '仅查看', value: '仅查看' }]"
@@ -145,115 +145,115 @@
       return {
         activeName: 'first',
         HRtableData:[{
-          HRname:'爱德华',
-          HRxianRenzhiWu:'部长',
-          eid:'2020202',
+          empName:'爱德华',
+          Email:'2928819291@qq.com',
+          empNo:'2020202',
           hrAcc:'123414',
           hrKey:'1828288383'
         },{
-          HRname:'爱丽丝',
-          HRxianRenzhiWu:'部员',
-          eid:'20211102',
+          empName:'爱丽丝',
+          Email:'2928819291@qq.com',
+          empNo:'20211102',
           hrAcc:'123414',
           hrKey:'1828288383'
         },{
-          HRname:'贝拉',
-          HRxianRenzhiWu:'部长',
-          eid:'3838738',
+          empName:'贝拉',
+          Email:'2928819291@qq.com',
+          empNo:'3838738',
           hrAcc:'123414',
           hrKey:'1828288383'
         },{
-          HRname:'雅克布',
-          HRxianRenzhiWu:'部长',
-          eid:'202027345',
+          empName:'雅克布',
+          Email:'2928819291@qq.com',
+          empNo:'202027345',
           hrAcc:'123414',
           hrKey:'1828288383'
         },{
-          HRname:'爱德华',
-          HRxianRenzhiWu:'部长',
-          eid:'2020202',
+          empName:'爱德华',
+          Email:'2928819291@qq.com',
+          empNo:'2020202',
           hrAcc:'123414',
           hrKey:'1828288383'
         },{
-          HRname:'爱丽丝',
-          HRxianRenzhiWu:'部员',
-          eid:'20211102',
+          empName:'爱丽丝',
+          Email:'2928819291@qq.com',
+          empNo:'20211102',
           hrAcc:'123414',
           hrKey:'1828288383'
         },{
-          HRname:'贝拉',
-          HRxianRenzhiWu:'部长',
-          eid:'3838738',
+          empName:'贝拉',
+          Email:'2928819291@qq.com',
+          empNo:'3838738',
           hrAcc:'123414',
           hrKey:'1828288383'
         },{
-          HRname:'雅克布',
-          HRxianRenzhiWu:'部长',
-          eid:'202027345',
+          empName:'雅克布',
+          Email:'2928819291@qq.com',
+          empNo:'202027345',
           hrAcc:'123414',
           hrKey:'1828288383'
         }],
         ZGtableData:[{
           ZGdepartment:'财务部',
-          ZGname:'Jacob',
-          eid:'12321414',
-          ZGxianRenzhiWu:'部长',
+          empName:'Jacob',
+          empNo:'12321414',
+          Email:'2928819291@qq.com',
           tag:'管理中',
           manAcc:'123414',
           manKey:'1828288383'
         },{
           ZGdepartment:'技术部',
-          ZGname:'Edward',
-          eid:'12321414',
-          ZGxianRenzhiWu:'部长',
+          empName:'Edward',
+          empNo:'12321414',
+          Email:'2928819291@qq.com',
           tag:'管理中',
           manAcc:'123414',
           manKey:'1828288383'
         },{
           ZGdepartment:'营销部',
-          ZGname:'Jacob',
-          eid:'12321414',
-          ZGxianRenzhiWu:'部长',
+          empName:'Jacob',
+          empNo:'12321414',
+          Email:'2928819291@qq.com',
           tag:'管理中',
           manAcc:'123414',
           manKey:'1828288383'
         },{
           ZGdepartment:'销售部',
-          ZGname:'Jacob',
-          eid:'12321414',
-          ZGxianRenzhiWu:'部长',
+          empName:'Jacob',
+          empNo:'12321414',
+          Email:'2928819291@qq.com',
           tag:'管理中',
           manAcc:'123414',
           manKey:'1828288383'
         },{
           ZGdepartment:'财务部',
-          ZGname:'Jacob',
-          eid:'12321414',
-          ZGxianRenzhiWu:'部长',
+          empName:'Jacob',
+          empNo:'12321414',
+          Email:'2928819291@qq.com',
           tag:'管理中',
           manAcc:'123414',
           manKey:'1828288383'
         },{
           ZGdepartment:'技术部',
-          ZGname:'Edward',
-          eid:'12321414',
-          ZGxianRenzhiWu:'部长',
+          empName:'Edward',
+          empNo:'12321414',
+          Email:'2928819291@qq.com',
           tag:'管理中',
           manAcc:'123414',
           manKey:'1828288383'
         },{
           ZGdepartment:'营销部',
-          ZGname:'Jacob',
-          eid:'12321414',
-          ZGxianRenzhiWu:'部长',
+          empName:'Jacob',
+          empNo:'12321414',
+          Email:'2928819291@qq.com',
           tag:'管理中',
           manAcc:'123414',
           manKey:'1828288383'
         },{
           ZGdepartment:'销售部',
-          ZGname:'Jacob',
-          eid:'12321414',
-          ZGxianRenzhiWu:'部长',
+          empName:'Jacob',
+          empNo:'12321414',
+          Email:'2928819291@qq.com',
           tag:'管理中',
           manAcc:'123414',
           manKey:'1828288383'

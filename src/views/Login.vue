@@ -144,9 +144,9 @@ export default {
     //       this.$api.loginManageAPI.login(this.form,this).then(res =>{
     //       })
     // },
-    register() {
-      this.$router.push({ name: "Register" });
-    },
+    // register() {
+    //   this.$router.push({ name: "Register" });
+    // },
   },
 };
 </script>
