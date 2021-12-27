@@ -47,6 +47,7 @@
 
             <el-table :data="tableData1" style="width: 100%" max-height="1600"  ref="filterTable" id="table1">
           
+          
 
             <el-table-column prop="empName" label="姓名" width="120">
             </el-table-column>
@@ -79,7 +80,7 @@
           </el-table>
         </template>
         </el-tab-pane>
-        <el-tab-pane label="未获权限员工" name="second">
+        <el-tab-pane label="已发送请求员工" name="second">
 
 
 
@@ -89,8 +90,10 @@
             
 
             <el-table :data="tableData" style="width: 100%" max-height="1600"  ref="filterTable" id="table1">
-          
-
+           
+            <el-table-column fixed prop="date" label="请求日期" sortable width="150" column-key="date" :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
+        :filter-method="filterHandler">
+            </el-table-column>
             <el-table-column prop="empName" label="姓名" width="120">
             </el-table-column>
             <el-table-column prop="empSex" label="性别" width="120" :filters="[{text: '男', value: '男'}, {text: '女', value: '女'}]" :filter-method="filterHandler">
@@ -101,16 +104,7 @@
             <el-table-column prop="empPhone" label="手机号" width="180">
             </el-table-column>
             
-            <el-table-column fixed="right" label="获取权限" width="120">
-              <template >
-                <!--  slot-scope="scope"-->
-                
-                <div id="anniu">
-                <el-button  size="mini" type="primary" icon="el-icon-user-solid" ></el-button>
-
-                </div>
-                            
-              </template>
+            <el-table-column prop="askStatus" fixed="right" label="是否获取权限" width="120">
             </el-table-column>
 
 
@@ -286,52 +280,68 @@
         drawer: false,
 
         tableData: [{
+          date: '2016-05-03',
           empName: '李六',
           empSex: '男',
           cpnName: 'A公司',
           cpnAdr: '...',
+          askStatus:'是',
           empPhone: 200333
         }, {
+          date: '2016-05-03',
           empName: '王小虎',
           empSex: '男',
           cpnName: 'C公司',
           cpnAdr: '...',
+          askStatus:'是',
           empPhone: 200333
         },{
+          date: '2016-05-03',
           empName: '王小虎',
           empSex: '男',
           cpnName: 'B公司',
           cpnAdr: '...',
+          askStatus:'是',
           empPhone: 200333
         }, {
+          date: '2016-05-03',
           empName: '张大头',
           empSex: '男',
           cpnName: 'A公司',
           cpnAdr: '...',
+          askStatus:'是',
           empPhone: 200333
         }, {
+          date: '2016-05-03',
           empName: '贺伯伯',
           empSex: '男',
           cpnName: 'B公司',
           cpnAdr: '...',
+          askStatus:'是',
           empPhone: 200333
         }, {
+          date: '2016-05-03',
           empName: '蒋卫慧',
           empSex: '女',
           cpnName: 'A公司',
           cpnAdr: '...',
+          askStatus:'是',
           empPhone: 200333
         }, {
+          date: '2016-05-03',
           empName: '王小虎',
           empSex: '男',
           cpnName: 'A公司',
           cpnAdr: '...',
+          askStatus:'否',
           empPhone: 200333
         }, {
+          date: '2016-05-03',
           empName: '卢阿姨',
           empSex: '女',
           cpnName: 'A公司',
           cpnAdr: '...',
+          askStatus:'否',
           empPhone: 200333
         }],
 
