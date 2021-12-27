@@ -79,7 +79,7 @@
                     <el-input v-model="ruleForm.eid"></el-input>
                   </el-form-item>
 
-                  <el-form-item label="任职部门" prop="apartment">
+                  <el-form-item label="任职部门" prop="empDep">
                     <el-input v-model="ruleForm.apartment"></el-input>
                   </el-form-item>
 
@@ -103,7 +103,7 @@
                 </el-dialog>
 
             <el-table ref="filterTable" :data="ZGtableData" style="width: 1250px">
-              <el-table-column sortable prop="ZGdepartment" label="部门名称" width="135"></el-table-column>
+              <el-table-column sortable prop="empDep" label="部门名称" width="135"></el-table-column>
               <el-table-column prop="empName" label="主管名称" width="135"></el-table-column>
               <el-table-column prop="empNo" label="员工编号" width="135"></el-table-column>
               <el-table-column prop="Email" label="Email" width="200"></el-table-column>
@@ -194,7 +194,7 @@
           hrKey:'1828288383'
         }],
         ZGtableData:[{
-          ZGdepartment:'财务部',
+          empDep:'财务部',
           empName:'Jacob',
           empNo:'12321414',
           Email:'2928819291@qq.com',
@@ -202,7 +202,7 @@
           manAcc:'123414',
           manKey:'1828288383'
         },{
-          ZGdepartment:'技术部',
+          empDep:'技术部',
           empName:'Edward',
           empNo:'12321414',
           Email:'2928819291@qq.com',
@@ -210,7 +210,7 @@
           manAcc:'123414',
           manKey:'1828288383'
         },{
-          ZGdepartment:'营销部',
+          empDep:'营销部',
           empName:'Jacob',
           empNo:'12321414',
           Email:'2928819291@qq.com',
@@ -218,7 +218,7 @@
           manAcc:'123414',
           manKey:'1828288383'
         },{
-          ZGdepartment:'销售部',
+          empDep:'销售部',
           empName:'Jacob',
           empNo:'12321414',
           Email:'2928819291@qq.com',
@@ -226,7 +226,7 @@
           manAcc:'123414',
           manKey:'1828288383'
         },{
-          ZGdepartment:'财务部',
+          empDep:'财务部',
           empName:'Jacob',
           empNo:'12321414',
           Email:'2928819291@qq.com',
@@ -234,7 +234,7 @@
           manAcc:'123414',
           manKey:'1828288383'
         },{
-          ZGdepartment:'技术部',
+          empDep:'技术部',
           empName:'Edward',
           empNo:'12321414',
           Email:'2928819291@qq.com',
@@ -242,7 +242,7 @@
           manAcc:'123414',
           manKey:'1828288383'
         },{
-          ZGdepartment:'营销部',
+          empDep:'营销部',
           empName:'Jacob',
           empNo:'12321414',
           Email:'2928819291@qq.com',
@@ -250,7 +250,7 @@
           manAcc:'123414',
           manKey:'1828288383'
         },{
-          ZGdepartment:'销售部',
+          empDep:'销售部',
           empName:'Jacob',
           empNo:'12321414',
           Email:'2928819291@qq.com',
