@@ -1,9 +1,9 @@
 <template>
   <div>
     <el-table ref="filterTable" :data="tableData" style="width: 100%">
-      <el-table-column prop="departmen" label="部门名称" width="180"></el-table-column>
-      <el-table-column prop="name" label="管理员" width="180"></el-table-column>
-      <el-table-column prop="xianRenzhiWu" label="现任职务" width="180"></el-table-column>
+      <el-table-column prop="empDep" label="部门名称" width="180"></el-table-column>
+      <el-table-column prop="empName" label="管理员" width="180"></el-table-column>
+      <el-table-column prop="empJob" label="现任职务" width="180"></el-table-column>
       <el-table-column prop="tag" label="状态" width="100"
        :filters="[{ text: '管理中', value: '管理中' }, 
        { text: '仅查看', value: '仅查看' }]"
@@ -29,44 +29,44 @@
     data() {
       return {
         tableData: [{
-          departmen: '人力资源部',
-          name: '王一',
-          xianRenzhiWu: '部长',
+          empDep: '人力资源部',
+          empName: '王一',
+          empJob: '部长',
           tag: '管理中'
         }, {
-          departmen: '人力资源部',
-          name: '林二',
-          xianRenzhiWu: '普通员工',
+          empDep: '人力资源部',
+          empName: '林二',
+          empJob: '普通员工',
           tag: '仅查看'
         }, {
-          departmen: '人力资源部',
-          name: '刘三',
-          xianRenzhiWu: '普通员工',
+          empDep: '人力资源部',
+          empName: '刘三',
+          empJob: '普通员工',
           tag: '管理中'
         }, {
-          departmen: '人力资源部',
-          name: '王九',
-          xianRenzhiWu: '普通员工',
+          empDep: '人力资源部',
+          empName: '王九',
+          empJob: '普通员工',
           tag: '管理中'
         }, {
-          departmen: '人力资源部',
-          name: '刘三',
-          xianRenzhiWu: '普通员工',
+          empDep: '人力资源部',
+          empName: '刘三',
+          empJob: '普通员工',
           tag: '管理中'
         }, {
-          departmen: '人力资源部',
-          name: '王九',
-          xianRenzhiWu: '普通员工',
+          empDep: '人力资源部',
+          empName: '王九',
+          empJob: '普通员工',
           tag: '管理中'
         },{
-          departmen: '人力资源部',
-          name: '刘三',
-          xianRenzhiWu: '普通员工',
+          empDep: '人力资源部',
+          empName: '刘三',
+          empJob: '普通员工',
           tag: '管理中'
         }, {
-          departmen: '人力资源部',
-          name: '王九',
-          xianRenzhiWu: '普通员工',
+          empDep: '人力资源部',
+          empName: '王九',
+          empJob: '普通员工',
           tag: '管理中'
         }]
       }

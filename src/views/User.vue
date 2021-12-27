@@ -222,7 +222,7 @@
           empName:'Jacob',
           empNo:'12321414',
           Email:'2928819291@qq.com',
-          tag:'管理中',
+          tag:'仅查看',
           manAcc:'123414',
           manKey:'1828288383'
         },{
@@ -230,7 +230,7 @@
           empName:'Jacob',
           empNo:'12321414',
           Email:'2928819291@qq.com',
-          tag:'管理中',
+          tag:'仅查看',
           manAcc:'123414',
           manKey:'1828288383'
         },{
@@ -330,6 +330,22 @@
       },
       toRead(tab,event) {
         event.tag="仅查看";
+      },
+      resetDateFilter() {
+        this.$refs.filterTable.clearFilter('date');
+      },
+      clearFilter() {
+        this.$refs.filterTable.clearFilter();
+      },
+      formatter(row, column) {
+        return row.address;
+      },
+      filterTag(value, row) {
+        return row.tag === value;
+      },
+      filterHandler(value, row, column) {
+        const property = column['property'];
+        return row[property] === value;
       }
 
 
