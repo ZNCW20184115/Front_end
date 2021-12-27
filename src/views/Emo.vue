@@ -20,7 +20,15 @@
             <!--<el-button @click="resetDateFilter">清除日期过滤器</el-button>-->
             <!--<el-button @click="clearFilter">清除所有过滤器</el-button>-->
 
-            <el-button type="primary" style=" margin-left: 3px;">搜索</el-button>
+            <!-- <el-autocomplete
+              v-model="state"
+              :fetch-suggestions="querySearchAsync"
+              placeholder="请输入内容"
+              @select="handleSelect"
+            ></el-autocomplete> -->
+
+            <!-- <el-button type="primary" style=" margin-left: 3px;">搜索</el-button> -->
+            
             <router-link  to="/Addemployee"><el-button type="primary" style=" margin-left: 480px;">录入员工信息</el-button></router-link>
             
 
