@@ -41,7 +41,7 @@
   <div id=fastdiv><router-link  to="/Examine_Emp"><el-button id="fast" type="warning" icon="el-icon-star-off" circle ></el-button></router-link>员工考核</div>
   
   <div id=fastdiv><router-link to="/RelationTransform"><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button></router-link>员工关系转换</div>
-  <div id=fastdiv><router-link to="/AdministratorChange"><el-button id="fast" type="success" icon="el-icon-check" circle ></el-button></router-link>主管权限变更</div>
+  <!-- <div id=fastdiv><router-link to="/AdministratorChange"><el-button id="fast" type="success" icon="el-icon-check" circle ></el-button></router-link>主管权限变更</div> -->
   <div id=fastdiv><el-button id="fast" type="primary" icon="el-icon-edit" circle ></el-button>用户信息</div>
   
   <div id=fastdiv><router-link  to="/Inform"><el-button id="fast" type="info" icon="el-icon-message" circle ></el-button></router-link>消息</div>
