@@ -1,7 +1,15 @@
 <template>
     <div  id="app">
             <br/>
-            <el-select
+            <el-autocomplete
+                v-model="state"
+                :fetch-suggestions="querySearchAsync1"
+                placeholder="请输入想查看的员工姓名"
+                @select="handleSelect1"
+                style="width:280px "
+              ></el-autocomplete>
+
+            <!-- <el-select
               v-model="value"
               filterable
               remote
@@ -15,7 +23,7 @@
                 :label="item.label"
                 :value="item.value">
               </el-option>
-            </el-select>
+            </el-select> -->
 
             <!--<el-button @click="resetDateFilter">清除日期过滤器</el-button>-->
             <!--<el-button @click="clearFilter">清除所有过滤器</el-button>-->
@@ -208,6 +216,23 @@
           
         ];
       },
+      loadAll1() {
+        return [
+          { "value": "员工1", "empSex": "女","company":"中国移动" },
+          { "value": "员工2", "empSex": "男","company":"中国移动" },
+          { "value": "员工3", "empSex": "女","company":"中国移动" },
+          { "value": "员工4", "empSex": "男","company":"中国移动" },
+          { "value": "员工5", "empSex": "女","company":"中国移动" },
+          { "value": "员工6", "empSex": "男","company":"中国移动" },
+          { "value": "员工7", "empSex": "男","company":"中国移动" },
+          
+        ];
+      },
+
+
+
+
+
       handleClick(tab, event) {
         console.log(tab, event);
         },
@@ -220,6 +245,19 @@
           cb(results);
         }, 3000 * Math.random());
       },
+
+      querySearchAsync1(queryString, cb) {
+        var employees1 = this.employees1;
+        var results = queryString ? employees1.filter(this.createStateFilter(queryString)) : employees1;
+
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          cb(results);
+        }, 3000 * Math.random());
+      },
+
+
+
       createStateFilter(queryString) {
         return (state) => {
           return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
@@ -234,6 +272,24 @@
           this.$message({
             type: 'success',
             message: '申请成功'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消操作'
+          });          
+        });
+      },
+      // 本公司员工查询
+      handleSelect1(item) {
+        //alert(item.value+'-'+item.empSex+'-'+item.birthday+'-'+item.company);
+        this.$confirm(item.value+'-'+item.empSex+'-'+item.birthday+'-'+item.company, {
+          confirmButtonText: '查看',
+          cancelButtonText: '取消',
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '查看成功'
           });
         }).catch(() => {
           this.$message({
@@ -264,10 +320,20 @@
     },
     mounted() {
       this.employees = this.loadAll();
+      this.employees1 = this.loadAll1();
       this.list = this.states.map(item => {
         return { value: `value:${item}`, label: `${item}` };
       });
     },
+
+
+
+    // mounted() {
+    //   this.employees1 = this.loadAll1();
+    //   this.list = this.states.map(item => {
+    //     return { value: `value:${item}`, label: `${item}` };
+    //   });
+    // },
     data() {
       return {
 
@@ -297,6 +363,8 @@
 
         activeName: 'first',
         employees: [],
+        employees1: [],
+
         state: '',
         timeout:  null,
 
