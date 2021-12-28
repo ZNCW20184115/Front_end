@@ -1,7 +1,7 @@
 <template>
   <el-container>
   <el-header><intro_header></intro_header></el-header>
-  <el-main><router-view /></el-main>
+  <el-main><router-view></router-view></el-main>
   <el-footer><intro_footer></intro_footer></el-footer>
 </el-container>
 </template>
@@ -26,16 +26,14 @@ export default {
   padding-right: 0px;
 }
 .el-main{
-  box-sizing: border-box;
-  min-height: 100%; 
-  padding-bottom: 300px;  
-  padding-top: 0;
+  padding: 0%;
 }
 .el-footer{
-  height: 400px;
   padding-left: 0px;
-  padding-right: 0px;
-  margin-top: -200px;   
+  padding-right: 0px; 
+}
+.el-container {
+  min-height: 70vh;
 }
 body {
     margin: 0;

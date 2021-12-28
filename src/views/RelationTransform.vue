@@ -1,9 +1,9 @@
 <template>
 <div>
-  <el-tabs v-model="activeName" @tab-click="handleClick"> 
+  <el-tabs v-model="activeName" @tab-click="handleClick" > 
     <!--转入申请-->
      <el-tab-pane label="转入申请" name="first">
-        <el-table :data="in_tableData" style="width: 100%">
+        <el-table :data="in_tableData" style="width: 100%" :row-class-name="tableRowClassName">
             <!-- 申请日期 -->
             <el-table-column prop="empEntry" label="申请日期" sortable width="180"></el-table-column>
             <!-- 申请人 -->
@@ -24,7 +24,8 @@
             <!-- 操作 -->
             <el-table-column label="操作" width="200">
                 <template slot-scope="scope">
-                    <el-button size="mini" @click="accept_in(scope.$index, scope.row)">同意</el-button>
+                    <el-button size="mini" 
+                    @click="accept_in(scope.$index, scope.row)">同意</el-button>
                     <el-button size="mini" type="danger" @click="reject_in(scope.$index, scope.row)">拒绝</el-button>
                 </template>
             </el-table-column>
@@ -126,7 +127,18 @@
       },
       onSubmit() {
         console.log('submit!');
+      },
+      tableRowClassName: function({row, rowIndex}) {
+        if (row.IN_tag == '已同意') {
+          return 'hidden-row';
+        }
+        return '';
       }
     }
-  };
+  }
 </script>
+<style>
+.el-tabs .hidden-row{
+  display: none;
+}
+</style>

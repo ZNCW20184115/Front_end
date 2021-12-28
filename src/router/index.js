@@ -14,6 +14,7 @@ export default new Router({
       path:  '/',
       name: 'Introduce',
       component: Introduce,
+      redirect:'/intro_main',
       children:[
         {
           path:'/intro_main',
@@ -37,7 +38,7 @@ export default new Router({
       name: 'Login',
       component: Login
     },
-    {
+    { 
       path: '/Register',
       name: 'Register',
       component: Register
@@ -46,6 +47,7 @@ export default new Router({
       path: '/Index',
       name: 'Index',
       component: Index,
+      redirect:'/home',
       children:[
         {
           path:'/home',
